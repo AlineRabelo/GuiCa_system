@@ -32,7 +32,6 @@ public class View extends JFrame{
         this.controller = controller;
         
         attributesSetter();
-        componentes();
         validation();
         
     }
@@ -51,8 +50,6 @@ public class View extends JFrame{
         
         //Frame para definir o texto inicial do meu primeiro panel
         JPanel topPanel = new JPanel();
-        //GridLayout topLayout = new GridLayout(1,2);
-       // topPanel.setLayout(topLayout);
         
         this.add(topPanel, BorderLayout.PAGE_START);
         
@@ -65,30 +62,15 @@ public class View extends JFrame{
         
         JLabel firstPage = new JLabel("Hairdresser Appoitment");
         topPanel.add(firstPage);
-        
-        
-        
-        //topPanel.add(center);
-        
-        
+ 
+           
         JPanel bottonPanel = new JPanel();
-        //GridLayout bottonLayout = new GridLayout(1,2);
-       // bottonPanel.setLayout(bottonLayout);
+          this.add(bottonPanel, BorderLayout.SOUTH);
         
-        this.add(bottonPanel, BorderLayout.SOUTH);
-        
-       //JPanel foot = new JPanel();
-       // FlowLayout footLayout = new FlowLayout();
-        //foot.setLayout(footLayout);
-       // footLayout.setAlignment(FlowLayout.CENTER);
-        
+          
         JLabel footPage = new JLabel("New here? \n Make an account"); //Perguntar pro prof. pq nao consigo quebrar a linha.
-       // foot.add(footPage);
-       bottonPanel.add(footPage);
+             bottonPanel.add(footPage);
        
-       //JPanel pLogin = new JPanel();
-
-        //this.add(pLogin);
             
         email = new JTextField(20);
         JLabel em = new JLabel("Email");
@@ -109,26 +91,9 @@ public class View extends JFrame{
         button.addActionListener(controller);
         center.add(palavra);
         center.add(button);
-        
-        
-       
-//        pLogin.add(email);
-//        pLogin.add(senha);
-//	pLogin.add(palavra);
-//        pLogin.add(button);
-        
-        
-        
+           
     }
     
-    private void componentes(){
-         
-       //login
-        
-        
-        
-        
-    }
     
     private void validation(){
         this.validate();
