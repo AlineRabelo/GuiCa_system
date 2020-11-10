@@ -6,6 +6,7 @@
 package login;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -23,7 +25,7 @@ public class View extends JFrame{
     
     
     private JTextField email;
-    private JTextField senha;
+    private JPasswordField senha;
     private JTextField palavra;
     Controller controller;
     
@@ -45,53 +47,74 @@ public class View extends JFrame{
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         
-        //criar um gridLayout o professor falou pra fazer apenas em duas linhas. 
-        
-        
-        //Frame para definir o texto inicial do meu primeiro panel
+                
+        //PAINEL PARA DEFINIR O TOPO COM O NOME DE "HAIRDRESSER APPOINTMENT"
         JPanel topPanel = new JPanel();
+            this.add(topPanel, BorderLayout.PAGE_START);
         
-        this.add(topPanel, BorderLayout.PAGE_START);
-        
+        //PAINEL CENTRAL QUE VAI LOGIN E SENHA     
         JPanel center = new JPanel();
-        FlowLayout centerLayout = new FlowLayout();
-        center.setLayout(centerLayout);
-        centerLayout.setAlignment(FlowLayout.CENTER);
-        
-        this.add(center, BorderLayout.CENTER);
-        
-        JLabel firstPage = new JLabel("Hairdresser Appoitment");
-        topPanel.add(firstPage);
- 
-           
-        JPanel bottonPanel = new JPanel();
-          this.add(bottonPanel, BorderLayout.SOUTH);
-        
-          
-        JLabel footPage = new JLabel("New here? \n Make an account"); //Perguntar pro prof. pq nao consigo quebrar a linha.
-             bottonPanel.add(footPage);
-       
+            this.add(center);
+            this.add(center, BorderLayout.CENTER);
             
+        
+        //FLOWLAYOUT PARA COLOCAR TUDO NO CENTRO
+        FlowLayout centerLayout = new FlowLayout();
+            center.setLayout(centerLayout);
+            centerLayout.setAlignment(FlowLayout.TRAILING);
+            
+            
+        //GRID PARA CONSEGUIR QUE TUDO FIQUE NO LUGAR MSMO QUANDO EU AUMENTO OU DIMINUO MINHA JANELA    
+        GridLayout minhaGrid = new GridLayout(7,2);
+            center.setLayout(minhaGrid);
+    
+            
+        //LABEL DO TOPO, ADICIONANDO NO PANEL PRINCIPAL E NO TOPO
+        JLabel firstPage = new JLabel("Hairdresser Appointment");
+        topPanel.add(firstPage);
+   
+        
+        //LABEL E CAIXA DE TEXTO PARA O USUARIO DIGITAR O EMAIL
+        JPanel emailPanel = new JPanel();
+        center.add(emailPanel);
         email = new JTextField(20);
-        JLabel em = new JLabel("Email");
-        center.add(em);
-        center.add(email); 
+        JLabel emailLabel = new JLabel("Email");
+        center.add(email);
+        emailPanel.add(emailLabel);
+        emailPanel.add(email);
+        center.setLayout(centerLayout);
         
         
-        senha = new JTextField(20);
-        JLabel pss = new JLabel("Password"); //Perguntar pro prof. pq nao esta do lado do password e sim do lado do email.
-        center.add(pss);
+       //LABEL E CAIXA DE TEXTO PARA O USUARIO DIGITAR A SENHA
+        JPanel senhaPanel = new JPanel();
+        center.add(senhaPanel);
+        senha = new JPasswordField(20);
+        JLabel senhaLabel = new JLabel("Password");
         center.add(senha);
-        
+        senhaPanel.add(senhaLabel);
+        senhaPanel.add(senha);
+        center.setLayout(centerLayout);
        
-        
-        
+       
+        //ESSA LINHA DE CODIGO NAO FICARA NO PROJETO FINAL, SERVE APENAS PARA MOSTRAR SE MEU DB ESTA FUNCIONANDO.
         palavra = new JTextField(20);
-        JButton button = new JButton("Login");
-        button.addActionListener(controller);
+        
+        //BOTAO DE LOGIN 
+        JPanel botaoPanel = new JPanel();
+        center.add(botaoPanel);
+        JButton botaoLogin = new JButton("Login");
+        botaoLogin.addActionListener(controller);
         center.add(palavra);
-        center.add(button);
-           
+        botaoPanel.add(botaoLogin);
+        
+    
+        //RODAPE 
+        JPanel rodape = new JPanel();
+          this.add(rodape, BorderLayout.SOUTH);
+        
+        //LINK PARA USUARIO CLICAR CASO NAO TENHA UMA CONTA 
+        JLabel footPage = new JLabel("New here? Make an account");
+          rodape.add(footPage);
     }
     
     
@@ -110,6 +133,8 @@ public class View extends JFrame{
     public void setResult(String result){
         palavra.setText(result);
     }
+    
+    
 
 }
 
