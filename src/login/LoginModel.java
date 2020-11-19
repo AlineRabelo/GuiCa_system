@@ -15,9 +15,9 @@ import java.sql.Statement;
  *
  * @author aline
  */
-public class Model {
+public class LoginModel {
 
-       public boolean login(User user){
+       public boolean login(LoginUser user){
         
         boolean result = false;
         

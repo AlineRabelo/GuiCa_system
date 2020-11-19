@@ -9,12 +9,12 @@ package login;
  *
  * @author aline
  */
-class User {
+class LoginUser {
     
     private String um;
     private String dois;
     
-    public User(String um, String dois){
+    public LoginUser(String um, String dois){
         this.um = um;
         this.dois = dois;
     }

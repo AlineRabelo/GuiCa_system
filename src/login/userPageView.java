@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author aline
  */
-public class userPage extends JFrame {
+public class userPageView extends JFrame {
     
     private JTextField name;
     private JTextField phone;
@@ -28,9 +28,9 @@ public class userPage extends JFrame {
     private JTextField date;
     private JTextField hour;
     
-    controllerUserPage userPage;
+    UserPageController userPage;
 
-    public userPage (controllerUserPage userPage){
+    public userPageView (UserPageController userPage){
         
         this.userPage = userPage;
         userFrameSetter();

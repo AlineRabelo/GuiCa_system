@@ -21,15 +21,15 @@ import javax.swing.JTextField;
  *
  * @author aline
  */
-public class View extends JFrame{
+public class LoginView extends JFrame{
     
     
     private JTextField email;
     private JPasswordField senha;
     private JTextField palavra;
-    Controller controller;
+    LoginController controller;
     
-    public View (Controller controller){
+    public LoginView (LoginController controller){
         
         this.controller = controller;
         
@@ -42,7 +42,7 @@ public class View extends JFrame{
         
         //Estetica do frame
         this.setVisible(true);
-        this.setSize(330,400);
+        this.setSize(370,360);
         this.setTitle("Login");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);

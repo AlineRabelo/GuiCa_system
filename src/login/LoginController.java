@@ -12,15 +12,15 @@ import java.awt.event.ActionListener;
  *
  * @author aline
  */
-public class Controller implements ActionListener{
+public class LoginController implements ActionListener{
     
-    View view;
-    Model model;
+    LoginView view;
+    LoginModel model;
     
     
-    public Controller(){
-        this.view = new View(this);
-        this.model = new Model();
+    public LoginController(){
+        this.view = new LoginView(this);
+        this.model = new LoginModel();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Controller implements ActionListener{
         String usuario = view.getValueOne();
         String senha = view.getValueTwo();
         
-        User user = new User(usuario, senha);
+        LoginUser user = new LoginUser(usuario, senha);
         
         boolean result = model.login(user);
         

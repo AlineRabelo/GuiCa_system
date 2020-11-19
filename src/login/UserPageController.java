@@ -12,14 +12,14 @@ import java.awt.event.ActionListener;
  *
  * @author aline
  */
-public class controllerUserPage implements ActionListener {
+public class UserPageController implements ActionListener {
     
     
-    userPage userpg;
+    userPageView userpg;
     
     
-    public controllerUserPage(){
-        this.userpg = new userPage(this);
+    public UserPageController(){
+        this.userpg = new userPageView(this);
     }
     
     

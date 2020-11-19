@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  *
  * @author aline
  */
-public class createAccount extends JFrame {
+public class createAccountView extends JFrame {
     
     private JTextField name;
     private JTextField email;
@@ -29,9 +29,9 @@ public class createAccount extends JFrame {
     
     
     
-    controllerCreateAccount contAccount;
+    CreateAccountController contAccount;
     
-    public createAccount (controllerCreateAccount contAccount){
+    public createAccountView (CreateAccountController contAccount){
         
         this.contAccount = contAccount;
         
@@ -43,7 +43,7 @@ public class createAccount extends JFrame {
     public void frameSetter(){
         
         this.setVisible(true);
-        this.setSize(330,400);
+        this.setSize(370,360);
         this.setTitle("Create an Account");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);

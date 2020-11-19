@@ -9,15 +9,15 @@ package login;
  *
  * @author aline
  */
-public class Login {
+public class MainSystem {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // new Controller();
-       // new controllerCreateAccount();
-        new controllerUserPage();
+        new LoginController();
+        new CreateAccountController();
+        new UserPageController();
     }
     
 }
