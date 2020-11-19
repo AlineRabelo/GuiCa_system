@@ -12,14 +12,14 @@ import java.awt.event.ActionListener;
  *
  * @author aline
  */
-public class UserPageController implements ActionListener {
+public class makeAppController implements ActionListener {
     
     
-    userPageView userpg;
+    makeAppView userpg;
     
     
-    public UserPageController(){
-        this.userpg = new userPageView(this);
+    public makeAppController(){
+        this.userpg = new makeAppView(this);
     }
     
     

@@ -6,8 +6,10 @@
 package login;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -56,7 +58,7 @@ public class createAccountView extends JFrame {
          //FLOWLAYOUT DO CENTRO   
          FlowLayout centerLayout = new FlowLayout();
             painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
+            centerLayout.setAlignment(FlowLayout.CENTER);
             
             
             
@@ -69,6 +71,7 @@ public class createAccountView extends JFrame {
         //PAINEL DO TOPO ONDE VOU INSERIR DENTRO DO PANEL PRINCIPAL  
         JPanel painelTopo = new JPanel();
             this.add(painelTopo, BorderLayout.PAGE_START);
+            painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
                      
         //LABEL DO TOPO
         JLabel labelTopo = new JLabel("Create an Account");

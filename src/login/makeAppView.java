@@ -6,9 +6,11 @@
 package login;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ import javax.swing.JTextField;
  *
  * @author aline
  */
-public class userPageView extends JFrame {
+public class makeAppView extends JFrame {
     
     private JTextField name;
     private JTextField phone;
@@ -28,9 +30,9 @@ public class userPageView extends JFrame {
     private JTextField date;
     private JTextField hour;
     
-    UserPageController userPage;
+    makeAppController userPage;
 
-    public userPageView (UserPageController userPage){
+    public makeAppView (makeAppController userPage){
         
         this.userPage = userPage;
         userFrameSetter();
@@ -43,26 +45,29 @@ public class userPageView extends JFrame {
         
         this.setVisible(true);
         this.setSize(370,360);
-        this.setTitle("User Page");
+        this.setTitle("Make an Appointment");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         
         //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
         JPanel painelPrincipal = new JPanel();
             this.add(painelPrincipal, BorderLayout.CENTER);
+//            painelPrincipal.setBackground(Color.RED);
             
         //FLOWLAYOUT CENTRAL
         FlowLayout centerLayout = new FlowLayout();
             painelPrincipal.setLayout(centerLayout);
             centerLayout.setAlignment(FlowLayout.TRAILING);
+            
 
         //PANEL DO TOPO PRINCIPAL
          JPanel painelTopo = new JPanel();
             this.add(painelTopo, BorderLayout.PAGE_START);    
+//            painelTopo.setBackground(Color.BLUE);
             
             
         //LABEL DO TOPO
-        FlowLayout labelLoginFlow = new FlowLayout();
+         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login User: ");
             painelTopo.add(labelTopo);
@@ -77,16 +82,11 @@ public class userPageView extends JFrame {
         //BOTAO DO LOGOUT
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        JPanel logoutPanel = new JPanel();
-        painelPrincipal.add(logoutPanel);
+        painelPrincipal.add(painelTopo);
         JButton logoutButton = new JButton("LogOut");
-       // logoutButton.addActionListener(cAccount);
-        logoutPanel.add(logoutButton);
+        painelTopo.add(logoutButton);
         painelTopo.setLayout(logOutFlow);
-        logoutButton.setPreferredSize(new Dimension(80,20));
-        
-        
-        
+        logoutButton.setPreferredSize(new Dimension(80,20));  
         
         //PANEL DO TOPO COM OS DOIS BOTOES
           JPanel appointPanel = new JPanel();
@@ -96,18 +96,16 @@ public class userPageView extends JFrame {
           appointFlow.setAlignment(FlowLayout.CENTER);
           
           JButton makeAppoint = new JButton("Make an Appointment");
-          JButton myAppoint = new JButton("My Appointments");
+          JButton myAppoint = new JButton("Appointments");
           appointPanel.add(makeAppoint);
           appointPanel.add(myAppoint);
+//          appointPanel.setBackground(Color.green);
+         
 
           
-          //FLOWLAYOUT DA PAGINA PRINCIPAL
-          FlowLayout bookFlow = new FlowLayout();
-          bookFlow.setAlignment(FlowLayout.CENTER);
-          
-          //FLOWLAYOUT DO OR
-          FlowLayout orFlow = new FlowLayout();
-          orFlow.setAlignment(FlowLayout.LEFT);
+         //FLOWLAYOUT DO OR
+         FlowLayout orFlow = new FlowLayout();
+         orFlow.setAlignment(FlowLayout.LEFT);
         
         //PANEL CENTRAL
         JPanel namePanel = new JPanel();
@@ -117,7 +115,7 @@ public class userPageView extends JFrame {
         painelPrincipal.add(name);
         namePanel.add(nameLabel);
         namePanel.add(name);
-        painelPrincipal.setLayout(bookFlow);  
+        
         
         JPanel phonePanel = new JPanel();
         painelPrincipal.add(phonePanel);
@@ -125,9 +123,7 @@ public class userPageView extends JFrame {
         JLabel phoneLabel = new JLabel("Phone");
         painelPrincipal.add(phone);
         phonePanel.add(phoneLabel);
-        phonePanel.add(phone);
-        painelPrincipal.setLayout(bookFlow);
-        
+        phonePanel.add(phone);       
         
         //MUDAR PARA OPCAO SELECT E NAO JTEXTFIELD
         JPanel hairPanel = new JPanel();
@@ -137,7 +133,6 @@ public class userPageView extends JFrame {
         painelPrincipal.add(hair);
         hairPanel.add(hairLabel);
         hairPanel.add(hair);
-        painelPrincipal.setLayout(bookFlow);
         
         JPanel orPanel = new JPanel();
         painelPrincipal.add(orPanel);
@@ -153,7 +148,6 @@ public class userPageView extends JFrame {
         painelPrincipal.add(location);
         locationPanel.add(locationLabel);
         locationPanel.add(location);
-        painelPrincipal.setLayout(bookFlow);
         
    
         JPanel datePanel = new JPanel();
@@ -163,7 +157,6 @@ public class userPageView extends JFrame {
         painelPrincipal.add(date);
         datePanel.add(dateLabel);
         datePanel.add(date);
-        painelPrincipal.setLayout(bookFlow);
         
         JPanel hourPanel = new JPanel();
         painelPrincipal.add(hourPanel);
@@ -172,7 +165,6 @@ public class userPageView extends JFrame {
         painelPrincipal.add(hour);
         hourPanel.add(hourLabel);
         hourPanel.add(hour);
-        painelPrincipal.setLayout(bookFlow);
         
         //BOTAO DE BOOK
          JPanel bookPanel = new JPanel();
@@ -180,6 +172,8 @@ public class userPageView extends JFrame {
         JButton bookButton = new JButton("BOOK");
        // doneButton.addActionListener(cAccount);
         bookPanel.add(bookButton);
+        
+         painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
    
         
     }

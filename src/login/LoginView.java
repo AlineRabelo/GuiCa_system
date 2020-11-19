@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,6 +52,7 @@ public class LoginView extends JFrame{
         //PAINEL PARA DEFINIR O TOPO COM O NOME DE "HAIRDRESSER APPOINTMENT"
         JPanel topPanel = new JPanel();
             this.add(topPanel, BorderLayout.PAGE_START);
+            topPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
         
         //PAINEL CENTRAL QUE VAI LOGIN E SENHA     
         JPanel center = new JPanel();
@@ -61,7 +63,7 @@ public class LoginView extends JFrame{
         //FLOWLAYOUT PARA COLOCAR TUDO NO CENTRO
         FlowLayout centerLayout = new FlowLayout();
             center.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
+            centerLayout.setAlignment(FlowLayout.CENTER);
             
             
         //GRID PARA CONSEGUIR QUE TUDO FIQUE NO LUGAR MSMO QUANDO EU AUMENTO OU DIMINUO MINHA JANELA    
@@ -72,6 +74,7 @@ public class LoginView extends JFrame{
         //LABEL DO TOPO, ADICIONANDO NO PANEL PRINCIPAL E NO TOPO
         JLabel firstPage = new JLabel("Hairdresser Appointment");
         topPanel.add(firstPage);
+        
    
         
         //LABEL E CAIXA DE TEXTO PARA O USUARIO DIGITAR O EMAIL

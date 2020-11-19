@@ -17,7 +17,9 @@ public class MainSystem {
     public static void main(String[] args) {
         new LoginController();
         new CreateAccountController();
-        new UserPageController();
+        new makeAppController();
+        new myAppointmentsController();
+        new commentsView();
     }
     
 }
