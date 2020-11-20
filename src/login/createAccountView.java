@@ -10,11 +10,16 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -29,8 +34,9 @@ public class createAccountView extends JFrame {
     private JTextField phone;
     private JTextField password;
     
-    
-    
+    JRadioButton client = null;
+    JRadioButton hairdresser = null;
+ 
     CreateAccountController contAccount;
     
     public createAccountView (CreateAccountController contAccount){
@@ -49,6 +55,8 @@ public class createAccountView extends JFrame {
         this.setTitle("Create an Account");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
+        
+        
         
          //PAINEL PRINCIPAL ONDE VAI TODO O FRAME
          JPanel painelPrincipal = new JPanel();
@@ -123,28 +131,35 @@ public class createAccountView extends JFrame {
         passwordPanel.add(passwordLabel);
         passwordPanel.add(password);
         painelPrincipal.setLayout(centerLayout);
-        
-        
-            
-           
+
         
         //PAINEL ONDE O USUARIO VAI SELECIONAR AS OPCOES DE HAIRDRESSER OU USUARIO
-        JPanel painelOpcoes = new JPanel();
-            this.add(painelOpcoes);
-            
-           
         
+        JPanel selectPanel = new JPanel();
+        painelPrincipal.add(selectPanel);
+
+        String[] optionString = { "Client", "Hairdresser" }; 
+        
+         client = new JRadioButton(optionString[0]);
+         client.setSelected(true);
+         hairdresser = new JRadioButton(optionString[1]);
+
+         //Group the radio buttons. 
+         ButtonGroup group = new ButtonGroup(); 
+         group.add(client); 
+         group.add(hairdresser);
+ 
+         painelPrincipal.add(client);
+         painelPrincipal.add(hairdresser);
+
+         
         //BOTAO DE "DONE"
         JPanel donePanel = new JPanel();
         painelPrincipal.add(donePanel);
         JButton doneButton = new JButton("Done");
        // doneButton.addActionListener(cAccount);
         donePanel.add(doneButton);
-            
-            
-        
-       
-       
+     
     }
     
     private void validation2(){

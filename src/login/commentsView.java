@@ -27,16 +27,20 @@ import javax.swing.JTextField;
 public class commentsView extends JFrame{
     
     private JTextField text;
+    private JButton logoutButton;
     
-    //MEU CONTROLLER VAI AQUI
+    commentsController comment;
     
-    public commentsView (){
+    public commentsView (commentsController comment){
         
+        this.comment = comment;
         commentsSetter();
         validation5();
         
     }
+
     
+   
     public void commentsSetter(){
         
         this.setVisible(true);
@@ -82,10 +86,12 @@ public class commentsView extends JFrame{
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
         painelPrincipal.add(painelTopo);
-        JButton logoutButton = new JButton("LogOut");
+        logoutButton = new JButton("LogOut");
         painelTopo.add(logoutButton);
         painelTopo.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20));
+        logoutButton.setActionCommand("LogOut");
+        logoutButton.addActionListener(comment);
         
         JPanel appointPanel = new JPanel();
         painelPrincipal.add(appointPanel);

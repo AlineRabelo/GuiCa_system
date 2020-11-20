@@ -7,6 +7,7 @@ package login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,8 @@ public class myAppointmentsController implements ActionListener {
     
     
     public myAppointmentsController(){
+        
+        this.myApp = myApp;
         this.myApp = new myAppointmentsView(this);
     }
     
@@ -27,7 +30,27 @@ public class myAppointmentsController implements ActionListener {
      @Override
     public void actionPerformed(ActionEvent e) {
         
+          if(e.getActionCommand().equals("LogOut")){  
+                int n = JOptionPane.showConfirmDialog(myApp, 
+                    "Are you sure that you want to Log Out?", 
+                    "Log Out", 
+                    JOptionPane.YES_NO_OPTION);
+        
+        if (n == 0){ //n==0 signigica o Yes entao ira fechar o programa
+            System.exit(0);
+            }  
+          }
        
+           if(e.getActionCommand().equals("Cancel")){
+              int n = JOptionPane.showConfirmDialog(myApp, 
+                    "Are you sure that you want to Cancel?", 
+                    "Cancel", 
+                    JOptionPane.YES_NO_OPTION);
+        
+                if (n == 0){ 
+                    JOptionPane.showMessageDialog(myApp, "Booked Canceled with Success!");
+                    }  
+          }
     }
 }
     

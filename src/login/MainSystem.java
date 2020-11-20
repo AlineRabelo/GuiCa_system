@@ -19,7 +19,10 @@ public class MainSystem {
         new CreateAccountController();
         new makeAppController();
         new myAppointmentsController();
-        new commentsView();
+        new commentsController();
+        new hairBookController();
+        new hairSlotsController();
+        new hairCommentsController();
     }
     
 }

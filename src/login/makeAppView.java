@@ -12,6 +12,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,8 +28,13 @@ public class makeAppView extends JFrame {
     private JTextField phone;
     private JTextField hair;
     private JTextField location;
-    private JTextField date;
-    private JTextField hour;
+    private JButton logoutButton;
+    private JButton bookButton;
+    
+    JComboBox hourList = null;
+    JComboBox dateList = null;
+    JComboBox hairList = null;
+    JComboBox locationList = null;
     
     makeAppController userPage;
 
@@ -83,10 +89,12 @@ public class makeAppView extends JFrame {
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
         painelPrincipal.add(painelTopo);
-        JButton logoutButton = new JButton("LogOut");
+        logoutButton = new JButton("LogOut");
         painelTopo.add(logoutButton);
         painelTopo.setLayout(logOutFlow);
-        logoutButton.setPreferredSize(new Dimension(80,20));  
+        logoutButton.setPreferredSize(new Dimension(80,20)); 
+        logoutButton.setActionCommand("LogOut");
+        logoutButton.addActionListener(userPage);
         
         //PANEL DO TOPO COM OS DOIS BOTOES
           JPanel appointPanel = new JPanel();
@@ -126,52 +134,81 @@ public class makeAppView extends JFrame {
         phonePanel.add(phone);       
         
         //MUDAR PARA OPCAO SELECT E NAO JTEXTFIELD
+        String[] hairStrings = { "Hair Show", "HairStyle 00", "Bald Barber", "HeadOff Barber", "Cabeleileira Leila" }; 
         JPanel hairPanel = new JPanel();
         painelPrincipal.add(hairPanel);
-        hair = new JTextField(20);
         JLabel hairLabel = new JLabel("Hairdresser");
-        painelPrincipal.add(hair);
         hairPanel.add(hairLabel);
-        hairPanel.add(hair);
+
+        hairList = new JComboBox(hairStrings); 
+        hairList.setSelectedIndex(4); 
+        hairPanel.add(hairList);
+        System.out.println(hairList.getSelectedItem());
+        hairList.setPreferredSize(new Dimension(200,20));
+        hairList.addActionListener(userPage);
+        hairList.setActionCommand("Hairdresser");
         
-        JPanel orPanel = new JPanel();
-        painelPrincipal.add(orPanel);
-        JLabel orLabel = new JLabel("Or");
-        orPanel.add(orLabel);
-        orPanel.setLayout(orFlow);
-        
-        
-        JPanel locationPanel = new JPanel();
-        painelPrincipal.add(locationPanel);
-        location = new JTextField(20);
-        JLabel locationLabel = new JLabel("Location");
-        painelPrincipal.add(location);
-        locationPanel.add(locationLabel);
-        locationPanel.add(location);
+        //ESSA PARTE EU AINDA NAO SEI COMO SERA ENCAIXADO, PQ QUERO QUE QUANDO A 
+        //PESSOA SELECIONAR O HAIRDRESSER O LOCATION APARECA CONFORME O ENDERECO DA PESSOA
+//        JPanel orPanel = new JPanel();
+//        painelPrincipal.add(orPanel);
+//        JLabel orLabel = new JLabel("Or");
+//        orPanel.add(orLabel);
+//        orPanel.setLayout(orFlow);
+//        
+//        String[] locationStrings = { "D01", "D02", "D03", "D04", "D06" }; 
+//        JPanel locationPanel = new JPanel();
+//        painelPrincipal.add(locationPanel);
+//        JLabel locationLabel = new JLabel("Location");
+//        locationPanel.add(locationLabel);
+//        
+//        locationList = new JComboBox(locationStrings); 
+//        locationList.setSelectedIndex(4); 
+//        locationPanel.add(locationList);
+//        System.out.println(locationList.getSelectedItem());
+//        locationList.setPreferredSize(new Dimension(200,20));
+//        locationList.addActionListener(userPage);
+//        locationList.setActionCommand("Location");
         
    
         JPanel datePanel = new JPanel();
         painelPrincipal.add(datePanel);
-        date = new JTextField(10);
         JLabel dateLabel = new JLabel("Date");
-        painelPrincipal.add(date);
         datePanel.add(dateLabel);
-        datePanel.add(date);
+        
+        String[] dateStrings = { "01/02", "02/02", "03/03", "04/04", "05/05" }; 
+        
+        dateList = new JComboBox(dateStrings); 
+        dateList.setSelectedIndex(4); 
+        datePanel.add(dateList);
+        System.out.println(dateList.getSelectedItem());
+        dateList.setPreferredSize(new Dimension(70,20));
+        dateList.addActionListener(userPage);
+        dateList.setActionCommand("Date");
         
         JPanel hourPanel = new JPanel();
         painelPrincipal.add(hourPanel);
-        hour = new JTextField(10);
         JLabel hourLabel = new JLabel("Hour");
-        painelPrincipal.add(hour);
         hourPanel.add(hourLabel);
-        hourPanel.add(hour);
+        
+        String[] hourStrings = { "10:00", "11:00", "13:00", "13:30", "14:00" }; 
+        
+        hourList = new JComboBox(hourStrings); 
+        hourList.setSelectedIndex(4); 
+        hourPanel.add(hourList);
+        System.out.println(hourList.getSelectedItem());
+        hourList.setPreferredSize(new Dimension(70,20));
+        hourList.addActionListener(userPage);
+        hourList.setActionCommand("Hour");
+
         
         //BOTAO DE BOOK
          JPanel bookPanel = new JPanel();
         painelPrincipal.add(bookPanel);
-        JButton bookButton = new JButton("BOOK");
-       // doneButton.addActionListener(cAccount);
+        bookButton = new JButton("BOOK");
         bookPanel.add(bookButton);
+        bookButton.addActionListener(userPage);
+        bookButton.setActionCommand("BOOK");
         
          painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
    

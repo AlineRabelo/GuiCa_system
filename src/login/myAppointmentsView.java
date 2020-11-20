@@ -28,13 +28,17 @@ public class myAppointmentsView extends JFrame {
     
     
      myAppointmentsController myApp;
-     
+     private JButton logoutButton;
+     JButton cancelButton = null;
+     JButton cancel2Button = null;
+     JButton cancel3Button = null;
      
     public myAppointmentsView (myAppointmentsController myApp){
     
         this.myApp = myApp;
         myAppointmentsSetter();
         validation4();
+        
     
     }
     
@@ -85,10 +89,12 @@ public class myAppointmentsView extends JFrame {
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
         painelPrincipal.add(painelTopo);
-        JButton logoutButton = new JButton("LogOut");
+        logoutButton = new JButton("LogOut");
         painelTopo.add(logoutButton);
         painelTopo.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20));
+        logoutButton.setActionCommand("LogOut");
+        logoutButton.addActionListener(myApp);
 
         //PANEL DO TOPO COM OS DOIS BOTOES
           JPanel appointPanel = new JPanel();
@@ -122,10 +128,12 @@ public class myAppointmentsView extends JFrame {
             FlowLayout cancelFlow = new FlowLayout();
             cancelFlow.setAlignment(FlowLayout.RIGHT);
             painelPrincipal.add(appInfo1);
-            JButton cancelButton = new JButton("Cancel");
+            cancelButton = new JButton("Cancel");
             appInfo1.add(cancelButton);
             appInfo1.setLayout(cancelFlow);
             cancelButton.setPreferredSize(new Dimension(80,20));
+            cancelButton.setActionCommand("Cancel");
+            cancelButton.addActionListener(myApp);
    
           
           JPanel appInfo2 = new JPanel();
@@ -144,10 +152,12 @@ public class myAppointmentsView extends JFrame {
           
           
             painelPrincipal.add(appInfo2);
-            JButton cancel2Button = new JButton("Cancel");
+            cancel2Button = new JButton("Cancel");
             appInfo2.add(cancel2Button);
             appInfo2.setLayout(cancelFlow);
             cancel2Button.setPreferredSize(new Dimension(80,20));
+            cancel2Button.setActionCommand("Cancel");
+            cancel2Button.addActionListener(myApp);
           
           
           
@@ -166,10 +176,12 @@ public class myAppointmentsView extends JFrame {
           appInfo3.setBorder(BorderFactory.createLineBorder(Color.gray));
           
             painelPrincipal.add(appInfo3);
-            JButton cancel3Button = new JButton("Cancel");
+            cancel3Button = new JButton("Cancel");
             appInfo3.add(cancel3Button);
             appInfo3.setLayout(cancelFlow);
             cancel3Button.setPreferredSize(new Dimension(80,20));
+            cancel3Button.setActionCommand("Cancel");
+            cancel3Button.addActionListener(myApp);
             
             
             //BOTAO PARA USUARIO DEIXAR OS COMENTARIOS SOBRE O ATENDIMENTO

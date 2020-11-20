@@ -13,31 +13,29 @@ import javax.swing.JOptionPane;
  *
  * @author aline
  */
-public class commentsController implements ActionListener {
+public class hairSlotsController implements ActionListener {
     
-        commentsView comment;
+    hairSlotsView hairSlots;
     
-    public commentsController(){
-        
-        this.comment = comment;
-        this.comment = new commentsView(this);
-        
+    public hairSlotsController(){
+       this.hairSlots = hairSlots;
+       this.hairSlots = new hairSlotsView(this);
+       
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
         if(e.getActionCommand().equals("LogOut")){  
-                int n = JOptionPane.showConfirmDialog(comment, 
+                int n = JOptionPane.showConfirmDialog(hairSlots, 
                     "Are you sure that you want to Log Out?", 
                     "Log Out", 
                     JOptionPane.YES_NO_OPTION);
         
-        if (n == 0){ //n==0 signigica o Yes entao ira fechar o programa
+        if (n == 0){ 
             System.exit(0);
             }  
           }
-        
     }
     
 }
