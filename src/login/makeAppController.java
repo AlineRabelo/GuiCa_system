@@ -65,5 +65,10 @@ public class makeAppController implements ActionListener {
        if(e.getActionCommand().equals("Hairdresser")){
            System.out.println(userpg.hairList.getSelectedItem());
        }
+       
+       if (e.getActionCommand().equals("appointments")){
+            userpg.dispose();
+            new myAppointmentsController();
+        }
     }
 }

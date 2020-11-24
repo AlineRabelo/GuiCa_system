@@ -37,9 +37,9 @@ public class createAccountView extends JFrame {
     JRadioButton client = null;
     JRadioButton hairdresser = null;
  
-    CreateAccountController contAccount;
+    createAccountController contAccount;
     
-    public createAccountView (CreateAccountController contAccount){
+    public createAccountView (createAccountController contAccount){
         
         this.contAccount = contAccount;
         

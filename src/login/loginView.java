@@ -7,6 +7,7 @@ package login;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -22,18 +23,19 @@ import javax.swing.JTextField;
  *
  * @author aline
  */
-public class LoginView extends JFrame{
+public class loginView extends JFrame{
     
     
     private JTextField email;
     private JPasswordField senha;
     private JTextField palavra;
-    LoginController controller;
+    loginController controller;
     
-    public LoginView (LoginController controller){
+    JButton createAcc = null;
+    
+    public loginView (loginController controller){
         
         this.controller = controller;
-        
         attributesSetter();
         validation();
         
@@ -47,6 +49,7 @@ public class LoginView extends JFrame{
         this.setTitle("Login");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
+       
         
                 
         //PAINEL PARA DEFINIR O TOPO COM O NOME DE "HAIRDRESSER APPOINTMENT"
@@ -115,9 +118,14 @@ public class LoginView extends JFrame{
         JPanel rodape = new JPanel();
           this.add(rodape, BorderLayout.SOUTH);
         
-        //LINK PARA USUARIO CLICAR CASO NAO TENHA UMA CONTA 
-        JLabel footPage = new JLabel("New here? Make an account");
-          rodape.add(footPage);
+        //BOTAO PARA USUARIO CLICAR CASO NAO TENHA UMA CONTA 
+        createAcc = new JButton("New User");
+        rodape.add(createAcc);
+        createAcc.setPreferredSize(new Dimension(120,20));
+        createAcc.setActionCommand("newuser");
+        createAcc.addActionListener(controller);
+        
+        
     }
     
     

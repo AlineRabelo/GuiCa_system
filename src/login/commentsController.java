@@ -37,7 +37,12 @@ public class commentsController implements ActionListener {
             System.exit(0);
             }  
           }
+        if (e.getActionCommand().equals("backApp")){
+               comment.dispose();
+               new myAppointmentsController();
+       
         
     }
     
+}
 }

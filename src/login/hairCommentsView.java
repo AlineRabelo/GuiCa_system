@@ -95,6 +95,10 @@ public class hairCommentsView extends JFrame {
           appointPanel.add(makeAppoint);
           appointPanel.add(myAppoint);
           appointPanel.add(myComments);
+          makeAppoint.addActionListener(hairComments);
+          makeAppoint.setActionCommand("booked");
+          myAppoint.addActionListener(hairComments);
+          myAppoint.setActionCommand("freeSlots");
 //          appointPanel.setBackground(Color.green);
 
           painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));

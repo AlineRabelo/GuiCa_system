@@ -107,6 +107,8 @@ public class myAppointmentsView extends JFrame {
           JButton myAppoint = new JButton("My Appointments");
           appointPanel.add(makeAppoint);
           appointPanel.add(myAppoint);
+          makeAppoint.addActionListener(myApp);
+          makeAppoint.setActionCommand("makeapp");
 //          appointPanel.setBackground(Color.green);
 //          appointPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
           
@@ -188,6 +190,8 @@ public class myAppointmentsView extends JFrame {
             //ESSE BOTAO IRA ABRIR UMA OUTRA JANELA MENOR COM O ULTIMO NEGOCIO QUE O PROFESSOR ENSINOU
             JButton makeComment = new JButton("Make Comments");
             painelPrincipal.add(makeComment);
+            makeComment.addActionListener(myApp);
+            makeComment.setActionCommand("makeComments");
 }
 
     public void validation4(){

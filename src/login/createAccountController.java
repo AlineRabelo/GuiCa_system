@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  *
  * @author aline
  */
-public class CreateAccountController implements ActionListener {
+public class createAccountController implements ActionListener {
     
     
     createAccountView cAccount;
     
     
-    public CreateAccountController(){
+    public createAccountController(){
         this.cAccount = new createAccountView(this);
     }
     

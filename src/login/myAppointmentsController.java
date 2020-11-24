@@ -49,8 +49,20 @@ public class myAppointmentsController implements ActionListener {
         
                 if (n == 0){ 
                     JOptionPane.showMessageDialog(myApp, "Booked Canceled with Success!");
-                    }  
+                    }         
+            }
+           
+                if (e.getActionCommand().equals("makeapp")){
+                         myApp.dispose();
+                         new makeAppController();
           }
+                
+                if (e.getActionCommand().equals("makeComments")){
+                        myApp.dispose();
+                        new commentsController();
+        }
+    
+    
     }
 }
     

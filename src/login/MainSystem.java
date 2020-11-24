@@ -15,14 +15,19 @@ public class MainSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new LoginController();
-        new CreateAccountController();
-        new makeAppController();
-        new myAppointmentsController();
-        new commentsController();
+        //ESSE
+//        new loginController();
+//        new createAccountController();
+
+        //ESSE
+//        new makeAppController();
+//        new myAppointmentsController();
+//        new commentsController();
+
+        //ESSE
         new hairBookController();
-        new hairSlotsController();
-        new hairCommentsController();
+//        new hairSlotsController();
+//        new hairCommentsController();
     }
     
 }

@@ -7,20 +7,21 @@ package login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author aline
  */
-public class LoginController implements ActionListener{
+public class loginController implements ActionListener{
     
-    LoginView view;
-    LoginModel model;
+    loginView view;
+    loginModel model;
     
     
-    public LoginController(){
-        this.view = new LoginView(this);
-        this.model = new LoginModel();
+    public loginController(){
+        this.view = new loginView(this);
+        this.model = new loginModel();
     }
 
     @Override
@@ -29,7 +30,7 @@ public class LoginController implements ActionListener{
         String usuario = view.getValueOne();
         String senha = view.getValueTwo();
         
-        LoginUser user = new LoginUser(usuario, senha);
+        loginUser user = new loginUser(usuario, senha);
         
         boolean result = model.login(user);
         
@@ -41,6 +42,13 @@ public class LoginController implements ActionListener{
         
         view.setResult(resultMessage);
         
+        
+        if (e.getActionCommand().equals("newuser")){
+            view.dispose();
+            new createAccountController();
+        }
+        
+       
+          }
     }
-    
-}
+

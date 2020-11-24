@@ -101,6 +101,8 @@ public class commentsView extends JFrame{
         
         JButton backAppButton = new JButton("Back to Appointments");
         appointPanel.add(backAppButton);
+        backAppButton.addActionListener(comment);
+        backAppButton.setActionCommand("backApp");
         
         JPanel appInfo1 = new JPanel();
           painelPrincipal.add(appInfo1);
@@ -119,6 +121,7 @@ public class commentsView extends JFrame{
             JButton commentButton = new JButton("Comment");
             appInfo1.add(commentButton);
             appInfo1.setLayout(commentFlow);
+            
 
    
           
@@ -126,6 +129,7 @@ public class commentsView extends JFrame{
           painelPrincipal.add(appInfo2);
 //          appInfo2.setBackground(Color.GREEN);
           text = new JTextField(20);
+//          text.setBounds(0,0,50,40);
           appInfo2.add(text);
           appInfo2.setLayout(new GridBagLayout());
           GridBagConstraints gbc1 = new GridBagConstraints();

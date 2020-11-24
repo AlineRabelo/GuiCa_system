@@ -107,6 +107,8 @@ public class makeAppView extends JFrame {
           JButton myAppoint = new JButton("Appointments");
           appointPanel.add(makeAppoint);
           appointPanel.add(myAppoint);
+          myAppoint.addActionListener(userPage);
+          myAppoint.setActionCommand("appointments");
 //          appointPanel.setBackground(Color.green);
          
 

@@ -36,6 +36,16 @@ public class hairSlotsController implements ActionListener {
             System.exit(0);
             }  
           }
+          
+            if (e.getActionCommand().equals("comments")){
+                 hairSlots.dispose();
+                 new hairCommentsController();  
+    }
+            if (e.getActionCommand().equals("booked")){
+                 hairSlots.dispose();
+                 new hairBookController();
+        
+    }
     }
     
 }
