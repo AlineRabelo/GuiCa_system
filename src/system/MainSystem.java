@@ -18,16 +18,16 @@ public class MainSystem {
         
        
         //ESSE
-        new loginController();
+        new loginController();  
 //        new createAccountController();
 
         //ESSE
-        new makeAppController();
-        new myAppointmentsController();
-        new commentsController();
+//        new makeAppController();
+//        new myAppointmentsController();
+//        new commentsController();
 
         //ESSE
-        new hairBookController();
+//        new hairBookController();
 //        new hairSlotsController();
 //        new hairCommentsController();
     }

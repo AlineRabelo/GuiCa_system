@@ -14,9 +14,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -26,10 +28,12 @@ import javax.swing.JTextField;
  */
 public class commentsView extends JFrame{
     
-    private JTextField text;
+    
     private JButton logoutButton;
     
+    JTextArea text;
     commentsController comment;
+    JComboBox hairList = null;
     
     public commentsView (commentsController comment){
         
@@ -39,8 +43,6 @@ public class commentsView extends JFrame{
         
     }
 
-    
-   
     public void commentsSetter(){
         
         this.setVisible(true);
@@ -75,10 +77,10 @@ public class commentsView extends JFrame{
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login User: ");
             painelTopo.add(labelTopo);
-            painelTopo.setLayout(labelLoginFlow);
+//            painelTopo.setLayout(labelLoginFlow);
             
          //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(6,1);
+         GridLayout minhaGrid = new GridLayout(5,1);
             painelPrincipal.setLayout(minhaGrid);
             painelTopo.setLayout(minhaGrid);
             
@@ -105,47 +107,35 @@ public class commentsView extends JFrame{
         backAppButton.addActionListener(comment);
         backAppButton.setActionCommand("backApp");
         
-        JPanel appInfo1 = new JPanel();
-          painelPrincipal.add(appInfo1);
-//          appInfo1.setBackground(Color.yellow);
-          text = new JTextField(20);
-          appInfo1.add(text);
-          appInfo1.setLayout(new GridBagLayout());
-          GridBagConstraints gbc = new GridBagConstraints();
-          gbc.gridwidth = GridBagConstraints.REMAINDER;
-          appInfo1.add(text, gbc);
-          appInfo1.setBorder(BorderFactory.createLineBorder(Color.gray));
-          
-            FlowLayout commentFlow = new FlowLayout();
-            commentFlow.setAlignment(FlowLayout.RIGHT);
-            painelPrincipal.add(appInfo1);
-            JButton commentButton = new JButton("Comment");
-            appInfo1.add(commentButton);
-            appInfo1.setLayout(commentFlow);
-            
+         String[] hairStrings = { "Hair Show", "HairStyle 00", "Bald Barber", "HeadOff Barber", "Cabeleileira Leila" }; 
+        JPanel hairPanel = new JPanel();
+        painelPrincipal.add(hairPanel);
+        JLabel hairLabel = new JLabel("Hairdresser");
+        hairPanel.add(hairLabel);
 
-   
-          
-          JPanel appInfo2 = new JPanel();
-          painelPrincipal.add(appInfo2);
-//          appInfo2.setBackground(Color.GREEN);
-          text = new JTextField(20);
-//          text.setBounds(0,0,50,40);
-          appInfo2.add(text);
-          appInfo2.setLayout(new GridBagLayout());
-          GridBagConstraints gbc1 = new GridBagConstraints();
-          gbc1.gridwidth = GridBagConstraints.REMAINDER;
-          appInfo2.add(text, gbc1);
-          appInfo2.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-          
-          
-            painelPrincipal.add(appInfo2);
-            JButton comment2Button = new JButton("Comment");
-            appInfo2.add(comment2Button);
-            appInfo2.setLayout(commentFlow);
+        hairList = new JComboBox(hairStrings); 
+        hairList.setSelectedIndex(4); 
+        hairPanel.add(hairList);
+        System.out.println(hairList.getSelectedItem());
+        hairList.setPreferredSize(new Dimension(200,20));
+        hairList.addActionListener(comment);
+        hairList.setActionCommand("hairdresser");
+        
+        JPanel boxPanel = new JPanel();
+          painelPrincipal.add(boxPanel);
+//          boxPanel.setBackground(Color.yellow);
+          text = new JTextArea(30,29);
+          boxPanel.add(text);
+          JScrollPane spBox = new JScrollPane(boxPanel);
+          painelPrincipal.add(spBox);
 
           
-
+         JPanel commentPanel = new JPanel();
+         painelPrincipal.add(commentPanel);
+         JButton commentButton = new JButton("Comment");
+         commentPanel.add(commentButton);
+        
+        
     }
     
     public void validation5(){

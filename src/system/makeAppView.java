@@ -105,7 +105,7 @@ public class makeAppView extends JFrame {
           appointFlow.setAlignment(FlowLayout.CENTER);
           
           JButton makeAppoint = new JButton("Make an Appointment");
-          JButton myAppoint = new JButton("Appointments");
+          JButton myAppoint = new JButton("My Appointments");
           appointPanel.add(makeAppoint);
           appointPanel.add(myAppoint);
           myAppoint.addActionListener(userPage);

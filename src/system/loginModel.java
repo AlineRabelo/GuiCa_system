@@ -17,16 +17,18 @@ import java.sql.Statement;
  */
 public class loginModel {
 
-       public boolean login(loginUser user){
+       public boolean loginPage(userUsuario user){
         
         boolean result = false;
+        
         
         try {
 
             String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
             String dbUser = "Aline_2019438";
             String dbPassword = "2019438";
-            String query = "SELECT * FROM Login WHERE email = '" + user.getUm() + "' AND password = '" + user.getDois() + "';";
+            String query = "SELECT * FROM LoginClient WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
+            
 
             // Get a connection to the database
             Connection conn = DriverManager.getConnection(dbServer, dbUser, dbPassword);
@@ -62,7 +64,63 @@ public class loginModel {
         }
         
         return result;
+ 
+         
         
     }
+       
+       public boolean login2(userUsuario user){
+        
+        boolean resultHair = false;
+        
+        
+        try {
+
+            String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
+            String dbUser = "Aline_2019438";
+            String dbPassword = "2019438";
+            String query = "SELECT * FROM LoginHair WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
+            
+
+            // Get a connection to the database
+            Connection conn = DriverManager.getConnection(dbServer, dbUser, dbPassword);
+
+            // Get a statement from the connection
+            Statement stmt = conn.createStatement();
+
+            // Execute the query
+            ResultSet rs = stmt.executeQuery(query);
+            
+            // Loop through the result set
+            if (rs.next()) {
+                resultHair = true;
+            }
+
+            // Close the result set, statement and the connection
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            // Loop through the SQL Exceptions
+            while (se != null) {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+
+                se = se.getNextException();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return resultHair;
+ 
+         
+        
+    }
+       
+       
     
 }

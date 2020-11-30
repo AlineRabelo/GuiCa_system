@@ -39,10 +39,11 @@ public class createAccountView extends JFrame {
     private JTextField phone;
     private JTextField password;
     
-    JRadioButton client = null;
-    JRadioButton hairdresser = null;
+    JRadioButton client;
+    JRadioButton hairdresser;
  
     createAccountController contAccount;
+
     
     public createAccountView (createAccountController contAccount){
         
@@ -154,6 +155,10 @@ public class createAccountView extends JFrame {
          ButtonGroup group = new ButtonGroup(); 
          group.add(client); 
          group.add(hairdresser);
+         client.addActionListener(contAccount);
+         client.setActionCommand("client");
+         hairdresser.addActionListener(contAccount);
+         hairdresser.setActionCommand("hairdresser");
  
          painelPrincipal.add(client);
          painelPrincipal.add(hairdresser);
@@ -163,8 +168,11 @@ public class createAccountView extends JFrame {
         JPanel donePanel = new JPanel();
         painelPrincipal.add(donePanel);
         JButton doneButton = new JButton("Done");
-       // doneButton.addActionListener(cAccount);
         donePanel.add(doneButton);
+        doneButton.addActionListener(contAccount);
+        doneButton.setActionCommand("done");
+        
+
         
         JPanel backPanel = new JPanel();
         painelPrincipal.add(backPanel);
@@ -181,61 +189,50 @@ public class createAccountView extends JFrame {
         this.repaint();
     }
     
-    public  String [][]  callingDB(){
-            
-            String[][] data = new String [10][5];
-            
-            
-            try {
-
-                String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
-                String user = "Aline_2019438";
-                String password = "2019438";
-                String query = "INSERT INTO users ";
-
-                // Get a connection to the database
-                Connection conn = DriverManager.getConnection(dbServer, user, password);
-
-                // Get a statement from the connection
-                Statement stmt = conn.createStatement();
-
-                // Execute the query
-                ResultSet rs = stmt.executeQuery(query);
-
-                // Loop through the result set
-
-                int row = 0;
-                while (rs.next()) {
-
-                    data[row][0] = rs.getString("StatusBook");
-                    data[row][1] = rs.getString("client_name");
-                    data[row][2] = rs.getString("date");
-                    data[row][3] = rs.getString("time");
-
-                    row++;       
-                }
-
-                // Close the result set, statement and the connection
-                rs.close();
-                stmt.close();
-                conn.close();
-
-                } catch (SQLException se) {
-                System.out.println("SQL Exception:");
-
-                // Loop through the SQL Exceptions
-                while (se != null) {
-                    System.out.println("State  : " + se.getSQLState());
-                    System.out.println("Message: " + se.getMessage());
-                    System.out.println("Error  : " + se.getErrorCode());
-
-                    se = se.getNextException();
-                }
-            } catch (Exception e) {
-                System.out.println(e);     
-        }
-            return data;
-        }
+    public String getValueName(){
+        return name.getText();
+    }
     
-    
+     public String getValueEmail(){
+        return email.getText();
+    }
+
+     public String getValueAddress(){
+        return address.getText();
+    }
+     
+     public String getValuePhone(){
+        return phone.getText();
+    }
+     
+     public String getValuePassword(){
+        return password.getText();
+    }
+     
+   
+     public boolean clientSelect(){
+        if (client.isSelected()){
+            return true;
+        }
+         else{
+           return false;
+       }
+  
+    }
+     
+     public boolean hairdresserSelect(){
+        if (hairdresser.isSelected()){
+            return true;
+        }
+         else{
+           return false;
+       }  
 }
+     
+}
+
+        
+
+            
+
+        

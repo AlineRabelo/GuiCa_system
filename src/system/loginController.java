@@ -27,21 +27,31 @@ public class loginController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        String usuario = view.getValueOne();
-        String senha = view.getValueTwo();
+        String usuario = view.getValueEmail();
+        String senha = view.getValuePassword();
         
-        loginUser user = new loginUser(usuario, senha);
+        userUsuario userPage = new userUsuario(usuario, senha);
         
-        boolean result = model.login(user);
+        boolean result = model.loginPage(userPage);
+        boolean resultHair = model.login2(userPage);
         
         String resultMessage = "Try again with valid credentials";
         
-        if(result){
-            resultMessage = "Welcome in";
+        if(e.getActionCommand().equals("login") && result){
+            view.dispose();
+            new makeAppController();
+            
+        }
+        
+        if (e.getActionCommand().equals("login") && resultHair){
+            view.dispose();
+            new hairBookController();
+            
         }
         
         view.setResult(resultMessage);
         
+   //-------------------NEW USER-----------------------------------
         
         if (e.getActionCommand().equals("newuser")){
             view.dispose();

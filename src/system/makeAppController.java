@@ -47,7 +47,7 @@ public class makeAppController implements ActionListener {
        else if(e.getActionCommand().equals("BOOK")){
            int n = JOptionPane.showConfirmDialog(userpg, 
                     "Are you sure that you want to procced?", 
-                    "Log Out", 
+                    "Booking", 
                     JOptionPane.YES_NO_OPTION);
            if (n==0){
                JOptionPane.showMessageDialog(userpg, "Booked Confirmed");

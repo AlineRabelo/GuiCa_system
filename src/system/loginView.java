@@ -28,7 +28,7 @@ public class loginView extends JFrame{
     
     private JTextField email;
     private JPasswordField senha;
-    private JTextField palavra;
+    private JLabel palavra;
     loginController controller;
     
     JButton createAcc = null;
@@ -103,16 +103,17 @@ public class loginView extends JFrame{
         center.setLayout(centerLayout);
        
        
-        //ESSA LINHA DE CODIGO NAO FICARA NO PROJETO FINAL, SERVE APENAS PARA MOSTRAR SE MEU DB ESTA FUNCIONANDO.
-        palavra = new JTextField(20);
-        
         //BOTAO DE LOGIN 
         JPanel botaoPanel = new JPanel();
         center.add(botaoPanel);
         JButton botaoLogin = new JButton("Login");
-        botaoLogin.addActionListener(controller);
-        center.add(palavra);
         botaoPanel.add(botaoLogin);
+        botaoLogin.addActionListener(controller);
+        botaoLogin.setActionCommand("login");
+        
+        palavra = new JLabel();
+        center.add(palavra);
+        
         
     
         //RODAPE 
@@ -136,11 +137,13 @@ public class loginView extends JFrame{
     }
     
     // Getters for username and password
-    public String getValueOne(){
+    public String getValueEmail(){
         return email.getText();
     }
-    public String getValueTwo(){
-        return senha.getText();
+    public String getValuePassword(){
+        String senhaString = String.valueOf(senha.getPassword());
+        
+        return senhaString;
     }
     public void setResult(String result){
         palavra.setText(result);

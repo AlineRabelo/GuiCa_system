@@ -130,7 +130,7 @@ public void hairBookSetter(){
   
           JTable tabela = new JTable(data, coluna);
           JScrollPane sp = new JScrollPane(tabela);
-          this.add(sp);         
+          tabelaPanel.add(sp);         
           tabelaPanel.add(tabela);
           tabela.setBorder(BorderFactory.createLineBorder(Color.gray));
 }
@@ -141,7 +141,8 @@ public void hairBookSetter(){
                 this.repaint();
 
             }
-
+         
+         
         public  String [][]  callingDB(){
             
             String[][] data = new String [10][5];
@@ -197,4 +198,5 @@ public void hairBookSetter(){
         }
             return data;
         }
+        
 }
