@@ -27,7 +27,7 @@ public class loginModel {
             String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
             String dbUser = "Aline_2019438";
             String dbPassword = "2019438";
-            String query = "SELECT * FROM LoginClient WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
+            String query = "SELECT * FROM LoginClient WHERE userEmail = '" + user.getEmail() + "' AND userPassword = '" + user.getPassword() + "';";
             
 
             // Get a connection to the database
@@ -79,7 +79,7 @@ public class loginModel {
             String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
             String dbUser = "Aline_2019438";
             String dbPassword = "2019438";
-            String query = "SELECT * FROM LoginHair WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
+            String query = "SELECT * FROM LoginHair WHERE hairEmail = '" + user.getEmail() + "' AND hairPassword = '" + user.getPassword() + "';";
             
 
             // Get a connection to the database

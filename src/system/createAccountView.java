@@ -173,7 +173,6 @@ public class createAccountView extends JFrame {
         doneButton.setActionCommand("done");
         
 
-        
         JPanel backPanel = new JPanel();
         painelPrincipal.add(backPanel);
         JButton backButton = new JButton("Back to Login");

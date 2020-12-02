@@ -34,6 +34,7 @@ public class commentsView extends JFrame{
     JTextArea text;
     commentsController comment;
     JComboBox hairList = null;
+    boolean Comment;
     
     public commentsView (commentsController comment){
         
@@ -134,6 +135,8 @@ public class commentsView extends JFrame{
          painelPrincipal.add(commentPanel);
          JButton commentButton = new JButton("Comment");
          commentPanel.add(commentButton);
+         commentButton.addActionListener(comment);
+         commentButton.setActionCommand("comment");
         
         
     }
@@ -143,5 +146,23 @@ public class commentsView extends JFrame{
         this.validate();
         this.repaint();
     }
+    
+    public String getValueHairdresser(){
+        return hairList.getName();
+    }
+    
+    public String getValueComments(){
+        return text.getText();
+    }
+
+    String commentsDB(userUsuario newComment) {
+         return text.getText();
+    }
+
+    String hairList() {
+        return hairList.getName();
+    }
+    
+   
     
 }

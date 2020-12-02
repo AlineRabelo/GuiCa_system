@@ -18,11 +18,11 @@ public class MainSystem {
         
        
         //ESSE
-        new loginController();  
+//        new loginController();  
 //        new createAccountController();
 
         //ESSE
-//        new makeAppController();
+        new makeAppController();
 //        new myAppointmentsController();
 //        new commentsController();
 

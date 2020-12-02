@@ -16,6 +16,8 @@ class userUsuario {
     private String password;
     private String address;
     private String phone;
+    private String hairdresser;
+    private String hcomments;
     
     
     public userUsuario(String email, String senha){
@@ -29,7 +31,17 @@ class userUsuario {
        this.address = address;
        this.phone = phone;
        this.password = password;
+       this.hairdresser = hairdresser; 
+       this.hcomments = hcomments;
     }
+
+    userUsuario(String hairdresser, String Comment, String nada) {
+        
+       this.hairdresser = hairdresser; 
+       this.hcomments = hcomments;
+    }
+
+    
     
     public String getName(){
         return name;
@@ -49,6 +61,14 @@ class userUsuario {
     
     public String getPassword() {
         return password;
+    }
+    
+    public String getHairdresser(){
+        return hairdresser;
+    }
+    
+    public String getComments(){
+        return hcomments;
     }
  
 

@@ -47,20 +47,33 @@ public class createAccountController implements ActionListener {
         
        userUsuario newUser = new userUsuario(userName, userEmail, userAddress, userPhone, userPassword);
        
-       boolean loginClient = createAccModel.createAccDB(newUser);
-//       boolean loginHairdresser = createAccModel.createAccDB(newUser);
-
       
-        if(e.getActionCommand().equals("done") && loginClient){
-            JOptionPane.showMessageDialog(cAccount, "Account Created with Success!");
-            cAccount.dispose();
-            new loginController();   
+        if(e.getActionCommand().equals("done")){
+            
+            if(cAccount.getValueName().isEmpty()||cAccount.getValueEmail().isEmpty() || cAccount.getValueAddress().isEmpty() || cAccount.getValuePhone().isEmpty() || cAccount.getValuePassword().isEmpty()){
+                JOptionPane.showMessageDialog(cAccount, "Please fill all the field with valid credencials");
+                cAccount.dispose();
+                new createAccountController();
             }
- 
-        else if(!loginClient){
-            JOptionPane.showMessageDialog(cAccount, "Please check your details and try again"); 
+            
+            else if(cAccount.clientSelect()){
+                createAccModel.createAccDB(newUser);
+                JOptionPane.showMessageDialog(cAccount, "Account Created with Success!");
+                cAccount.dispose();
+                new loginController(); 
+            }
+            else if(cAccount.hairdresserSelect()){
+                createAccModel.createAccDBHair(newUser);
+                JOptionPane.showMessageDialog(cAccount, "Account Created with Success!");
+                cAccount.dispose();
+                new loginController(); 
+            }
+            
+              
             
         }
+ 
+        
  
     }
     
