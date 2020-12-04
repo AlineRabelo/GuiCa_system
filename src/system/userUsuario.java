@@ -18,7 +18,7 @@ class userUsuario {
     private String phone;
     private String hairdresser;
     private String hcomments;
-    
+
     
     public userUsuario(String email, String senha){
         this.email = email;
@@ -62,6 +62,7 @@ class userUsuario {
     public String getPassword() {
         return password;
     }
+    
     
     public String getHairdresser(){
         return hairdresser;

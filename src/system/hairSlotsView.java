@@ -10,12 +10,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -39,104 +46,72 @@ public hairSlotsView (hairSlotsController hairSlots){
 
 public void hairSlotsSetter(){
     
-    this.setVisible(true);
-    this.setSize(370,360);
-    this.setTitle("Hairdresser Free Slots");
-    BorderLayout fLay = new BorderLayout();
-    this.setLayout(fLay);
-    setLocationRelativeTo(null);
+        this.setVisible(true);
+        this.setSize(370,360);
+        this.setTitle("Hairdresser Free Slots");
+        BorderLayout fLay = new BorderLayout();
+        this.setLayout(fLay);
+        setLocationRelativeTo(null);
+        this.setResizable(false);
     
-     //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
-        JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
-//            painelPrincipal.setBackground(Color.RED);
-            
-        //FLOWLAYOUT CENTRAL
-        FlowLayout centerLayout = new FlowLayout();
-            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
-            
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
 
-        //PANEL DO TOPO PRINCIPAL
-         JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START);    
-//            painelTopo.setBackground(Color.BLUE);
+        FlowLayout centerLayout = new FlowLayout();
+        panelPrincipal.setLayout(centerLayout);
+        centerLayout.setAlignment(FlowLayout.TRAILING);
+
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START); 
+        panelTop.setPreferredSize(new Dimension(350,40));  
             
-            
-        //LABEL DO TOPO
-         FlowLayout labelLoginFlow = new FlowLayout();
+        FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login hairdresser: ");
-            painelTopo.add(labelTopo);
-            painelTopo.setLayout(labelLoginFlow);
-            
-         //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(10,5);
-            painelPrincipal.setLayout(minhaGrid);
-            painelTopo.setLayout(minhaGrid);
-            
-            
-        //BOTAO DO LOGOUT
+        panelTop.add(labelTopo);
+        panelTop.setLayout(labelLoginFlow);
+
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        painelPrincipal.add(painelTopo);
+        panelPrincipal.add(panelTop);
         logoutButton = new JButton("LogOut");
-        painelTopo.add(logoutButton);
-        painelTopo.setLayout(logOutFlow);
+        panelTop.add(logoutButton);
+        panelTop.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20)); 
         logoutButton.setActionCommand("LogOut");
         logoutButton.addActionListener(hairSlots);
         
-        //PANEL DO TOPO COM OS DOIS BOTOES
-          JPanel appointPanel = new JPanel();
-          painelPrincipal.add(appointPanel);
-          FlowLayout appointFlow = new FlowLayout();
-          appointPanel.setLayout(appointFlow);
-          appointFlow.setAlignment(FlowLayout.CENTER);
+        JPanel appointPanel = new JPanel();
+        panelPrincipal.add(appointPanel);
+        FlowLayout appointFlow = new FlowLayout();
+        appointPanel.setLayout(appointFlow);
+        appointFlow.setAlignment(FlowLayout.CENTER);
+        appointPanel.setPreferredSize(new Dimension(370,40));
           
-          JButton makeAppoint = new JButton("Booked");
-          JButton myAppoint = new JButton("Free Slots");
-          JButton myComments = new JButton("Client Comments");
-          appointPanel.add(makeAppoint);
-          appointPanel.add(myAppoint);
-          appointPanel.add(myComments);
-          makeAppoint.addActionListener(hairSlots);
-          makeAppoint.setActionCommand("booked");
-          myComments.addActionListener(hairSlots);
-          myComments.setActionCommand("comments");
-//          appointPanel.setBackground(Color.green);
+        JButton makeAppoint = new JButton("Booked");
+        JButton myAppoint = new JButton("Free Slots");
+        JButton myComments = new JButton("Client Comments");
+        appointPanel.add(makeAppoint);
+        appointPanel.add(myAppoint);
+        appointPanel.add(myComments);
+        makeAppoint.addActionListener(hairSlots);
+        makeAppoint.setActionCommand("booked");
+        myComments.addActionListener(hairSlots);
+        myComments.setActionCommand("comments");
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.gray));
 
-          painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
-          
-          JPanel slotPanel = new JPanel();
-          painelPrincipal.add(slotPanel);
-//          slotPanel.setBackground(Color.orange);
-          
-          JLabel dateLabel = new JLabel("Date");
-          slotPanel.add(dateLabel);
-          
-          String[] dateStrings = { "01/02", "02/02", "03/03", "04/04", "05/05" }; 
-        
-            dateList = new JComboBox(dateStrings); 
-            dateList.setSelectedIndex(4); 
-            slotPanel.add(dateList);
-            System.out.println(dateList.getSelectedItem());
-            dateList.setPreferredSize(new Dimension(70,20));
-//            dateList.addActionListener(userPage);
-            dateList.setActionCommand("Date");
-            
-            JLabel hourLabel = new JLabel("Hour");
-            slotPanel.add(hourLabel);
 
-            String[] hourStrings = { "10:00", "11:00", "13:00", "13:30", "14:00" }; 
+        JPanel tablePanel = new JPanel();
+        panelPrincipal.add(tablePanel);
+          String[] coluna = {"Date", "Hour"}; 
+          String[][] data = callingDB(); 
 
-            hourList = new JComboBox(hourStrings); 
-            hourList.setSelectedIndex(4); 
-            slotPanel.add(hourList);
-            System.out.println(hourList.getSelectedItem());
-            hourList.setPreferredSize(new Dimension(70,20));
-//            hourList.addActionListener(userPage);
-            hourList.setActionCommand("Hour");
+        JTable table = new JTable(data, coluna);
+        table.setPreferredSize(new Dimension(320,200));
+        JScrollPane sp = new JScrollPane(table);
+        tablePanel.add(sp);         
+        tablePanel.add(table);
+        table.setBorder(BorderFactory.createLineBorder(Color.gray));
     
 }
 
@@ -146,5 +121,60 @@ public void validation(){
     this.repaint();
     
 }
+
+ public  String [][]  callingDB(){
+            
+            String[][] data = new String [20][2];
+            
+            
+            try {
+
+                String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
+                String user = "Aline_2019438";
+                String password = "2019438";
+                String query = "SELECT * FROM Freeslots";
+
+                // Get a connection to the database
+                Connection conn = DriverManager.getConnection(dbServer, user, password);
+
+                // Get a statement from the connection
+                Statement stmt = conn.createStatement();
+
+                // Execute the query
+                ResultSet rs = stmt.executeQuery(query);
+
+                // Loop through the result set
+
+                int row = 0;
+                while (rs.next()) {
+
+                    data[row][0] = rs.getString("date");
+                    data[row][1] = rs.getString("hour");
+                  
+
+                    row++;       
+                }
+
+                // Close the result set, statement and the connection
+                rs.close();
+                stmt.close();
+                conn.close();
+
+                } catch (SQLException se) {
+                System.out.println("SQL Exception:");
+
+                // Loop through the SQL Exceptions
+                while (se != null) {
+                    System.out.println("State  : " + se.getSQLState());
+                    System.out.println("Message: " + se.getMessage());
+                    System.out.println("Error  : " + se.getErrorCode());
+
+                    se = se.getNextException();
+                }
+            } catch (Exception e) {
+                System.out.println(e);     
+        }
+            return data;
+        }
     
 }

@@ -22,13 +22,8 @@ public class makeAppController implements ActionListener {
     public makeAppController(){
         
         this.userpg = userpg;
-        this.userpg = new makeAppView(this);
-        
-        
-        
+        this.userpg = new makeAppView(this);        
     }
-    
-    
      
      @Override
     public void actionPerformed(ActionEvent e) {
@@ -39,7 +34,7 @@ public class makeAppController implements ActionListener {
                     "Log Out", 
                     JOptionPane.YES_NO_OPTION);
         
-        if (n == 0){ //n==0 signigica o Yes entao ira fechar o programa
+        if (n == 0){
             System.exit(0);
             }  
           }

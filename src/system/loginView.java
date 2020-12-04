@@ -32,6 +32,7 @@ public class loginView extends JFrame{
     loginController controller;
     
     JButton createAcc = null;
+ 
     
     public loginView (loginController controller){
         
@@ -43,45 +44,32 @@ public class loginView extends JFrame{
     
     private void attributesSetter(){
         
-        //Estetica do frame
+        
         this.setVisible(true);
         this.setSize(370,360);
         this.setTitle("Login");
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         setLocationRelativeTo(null);
-       
-        
-                
-        //PAINEL PARA DEFINIR O TOPO COM O NOME DE "HAIRDRESSER APPOINTMENT"
+        this.setResizable(false);
+      
         JPanel topPanel = new JPanel();
-            this.add(topPanel, BorderLayout.PAGE_START);
-            topPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        this.add(topPanel, BorderLayout.PAGE_START);
+        topPanel.setBorder(BorderFactory.createLineBorder(Color.gray));
         
-        //PAINEL CENTRAL QUE VAI LOGIN E SENHA     
+ 
         JPanel center = new JPanel();
-            this.add(center);
-            this.add(center, BorderLayout.CENTER);
-            
-        
-        //FLOWLAYOUT PARA COLOCAR TUDO NO CENTRO
+        this.add(center);
+        this.add(center, BorderLayout.CENTER);
+
         FlowLayout centerLayout = new FlowLayout();
-            center.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.CENTER);
-            
-            
-        //GRID PARA CONSEGUIR QUE TUDO FIQUE NO LUGAR MSMO QUANDO EU AUMENTO OU DIMINUO MINHA JANELA    
-        GridLayout minhaGrid = new GridLayout(7,2);
-            center.setLayout(minhaGrid);
+        center.setLayout(centerLayout);
+        centerLayout.setAlignment(FlowLayout.CENTER);
     
-            
-        //LABEL DO TOPO, ADICIONANDO NO PANEL PRINCIPAL E NO TOPO
         JLabel firstPage = new JLabel("Hairdresser Appointment");
         topPanel.add(firstPage);
-        
-   
-        
-        //LABEL E CAIXA DE TEXTO PARA O USUARIO DIGITAR O EMAIL
+                
+
         JPanel emailPanel = new JPanel();
         center.add(emailPanel);
         email = new JTextField(20);
@@ -89,13 +77,10 @@ public class loginView extends JFrame{
         center.add(email);
         emailPanel.add(emailLabel);
         emailPanel.add(email);
-        center.setLayout(centerLayout);
-        
-        
-       //LABEL E CAIXA DE TEXTO PARA O USUARIO DIGITAR A SENHA
+
         JPanel senhaPanel = new JPanel();
         center.add(senhaPanel);
-        senha = new JPasswordField(20);
+        senha = new JPasswordField(18);
         JLabel senhaLabel = new JLabel("Password");
         center.add(senha);
         senhaPanel.add(senhaLabel);
@@ -103,31 +88,26 @@ public class loginView extends JFrame{
         center.setLayout(centerLayout);
        
        
-        //BOTAO DE LOGIN 
         JPanel botaoPanel = new JPanel();
         center.add(botaoPanel);
         JButton botaoLogin = new JButton("Login");
         botaoPanel.add(botaoLogin);
         botaoLogin.addActionListener(controller);
         botaoLogin.setActionCommand("login");
+
         
         palavra = new JLabel();
         center.add(palavra);
         
-        
-    
-        //RODAPE 
         JPanel rodape = new JPanel();
-          this.add(rodape, BorderLayout.SOUTH);
+        this.add(rodape, BorderLayout.SOUTH);
         
-        //BOTAO PARA USUARIO CLICAR CASO NAO TENHA UMA CONTA 
         createAcc = new JButton("New User");
         rodape.add(createAcc);
         createAcc.setPreferredSize(new Dimension(120,20));
         createAcc.setActionCommand("newuser");
         createAcc.addActionListener(controller);
-        
-        
+    
     }
     
     
@@ -136,20 +116,15 @@ public class loginView extends JFrame{
         this.repaint();
     }
     
-    // Getters for username and password
     public String getValueEmail(){
         return email.getText();
     }
     public String getValuePassword(){
         String senhaString = String.valueOf(senha.getPassword());
-        
         return senhaString;
     }
     public void setResult(String result){
         palavra.setText(result);
     }
-    
-    
-
 }
 

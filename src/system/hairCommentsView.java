@@ -10,11 +10,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -41,68 +48,67 @@ public class hairCommentsView extends JFrame {
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         setLocationRelativeTo(null);
-        
-        //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
-        JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
-//            painelPrincipal.setBackground(Color.RED);
-            
-        //FLOWLAYOUT CENTRAL
+        this.setResizable(false);
+
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
+
         FlowLayout centerLayout = new FlowLayout();
-            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
+        centerLayout.setAlignment(FlowLayout.TRAILING);
             
 
-        //PANEL DO TOPO PRINCIPAL
-         JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START);    
-//            painelTopo.setBackground(Color.BLUE);
-            
-            
-        //LABEL DO TOPO
-         FlowLayout labelLoginFlow = new FlowLayout();
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START);    
+        panelTop.setPreferredSize(new Dimension(350,40));
+
+        FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
-        JLabel labelTopo = new JLabel("Login hairdresser: ");
-            painelTopo.add(labelTopo);
-            painelTopo.setLayout(labelLoginFlow);
-            
-         //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(10,5);
-            painelPrincipal.setLayout(minhaGrid);
-            painelTopo.setLayout(minhaGrid);
-            
-            
-        //BOTAO DO LOGOUT
+        JLabel labelTopo = new JLabel("Login hairdresser: Welcome");
+        panelTop.add(labelTopo);
+        panelTop.setLayout(labelLoginFlow);
+
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        painelPrincipal.add(painelTopo);
+        panelPrincipal.add(panelTop);
         logoutButton = new JButton("LogOut");
-        painelTopo.add(logoutButton);
-        painelTopo.setLayout(logOutFlow);
+        panelTop.add(logoutButton);
+        panelTop.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20)); 
         logoutButton.setActionCommand("LogOut");
         logoutButton.addActionListener(hairComments);
         
-        //PANEL DO TOPO COM OS DOIS BOTOES
-          JPanel appointPanel = new JPanel();
-          painelPrincipal.add(appointPanel);
-          FlowLayout appointFlow = new FlowLayout();
-          appointPanel.setLayout(appointFlow);
-          appointFlow.setAlignment(FlowLayout.CENTER);
+        JPanel appointPanel = new JPanel();
+        panelPrincipal.add(appointPanel);
+        FlowLayout appointFlow = new FlowLayout();
+        appointPanel.setLayout(appointFlow);
+        appointFlow.setAlignment(FlowLayout.CENTER);
+        appointPanel.setPreferredSize(new Dimension(370,40));
           
-          JButton makeAppoint = new JButton("Booked");
-          JButton myAppoint = new JButton("Free Slots");
-          JButton myComments = new JButton("Client Comments");
-          appointPanel.add(makeAppoint);
-          appointPanel.add(myAppoint);
-          appointPanel.add(myComments);
-          makeAppoint.addActionListener(hairComments);
-          makeAppoint.setActionCommand("booked");
-          myAppoint.addActionListener(hairComments);
-          myAppoint.setActionCommand("freeSlots");
-//          appointPanel.setBackground(Color.green);
+        JButton makeAppoint = new JButton("Booked");
+        JButton myAppoint = new JButton("Free Slots");
+        JButton myComments = new JButton("Client Comments");
+        appointPanel.add(makeAppoint);
+        appointPanel.add(myAppoint);
+        appointPanel.add(myComments);
+        myAppoint.addActionListener(hairComments);
+        myAppoint.setActionCommand("freeSlots");
+        makeAppoint.addActionListener(hairComments);
+        makeAppoint.setActionCommand("booked");
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.gray));
+          
+        JPanel tabelaPanel = new JPanel();
+        panelPrincipal.add(tabelaPanel);
+        
 
-          painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
+        String[] coluna = {"Client", "Comment"}; 
+        String[][] data = callingDB(); 
+  
+        JTable table = new JTable(data, coluna);
+        table.setPreferredSize(new Dimension(320,200));
+        JScrollPane sp = new JScrollPane(table);
+        tabelaPanel.add(sp);         
+        tabelaPanel.add(table);
+        table.setBorder(BorderFactory.createLineBorder(Color.gray));
         
     }
     
@@ -112,4 +118,60 @@ public class hairCommentsView extends JFrame {
         this.repaint();
         
     }
+    
+    public  String [][]  callingDB(){
+            
+            String[][] data = new String [50][2];
+            
+            
+            try {
+
+                String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
+                String user = "Aline_2019438";
+                String password = "2019438";
+                String query = "SELECT * FROM CommentsHairdresser";
+
+                // Get a connection to the database
+                Connection conn = DriverManager.getConnection(dbServer, user, password);
+
+                // Get a statement from the connection
+                Statement stmt = conn.createStatement();
+
+                // Execute the query
+                ResultSet rs = stmt.executeQuery(query);
+
+                // Loop through the result set
+
+                int row = 0;
+                while (rs.next()) {
+
+                    data[row][0] = rs.getString("clientname");
+                    data[row][1] = rs.getString("comment");
+                  
+
+                    row++;       
+                }
+
+                // Close the result set, statement and the connection
+                rs.close();
+                stmt.close();
+                conn.close();
+
+                } catch (SQLException se) {
+                System.out.println("SQL Exception:");
+
+                // Loop through the SQL Exceptions
+                while (se != null) {
+                    System.out.println("State  : " + se.getSQLState());
+                    System.out.println("Message: " + se.getMessage());
+                    System.out.println("Error  : " + se.getErrorCode());
+
+                    se = se.getNextException();
+                }
+            } catch (Exception e) {
+                System.out.println(e);     
+        }
+            return data;
+        }
+        
 }

@@ -36,7 +36,7 @@ public class myAppointmentsController implements ActionListener {
                     "Log Out", 
                     JOptionPane.YES_NO_OPTION);
         
-        if (n == 0){ //n==0 signigica o Yes entao ira fechar o programa
+        if (n == 0){ 
             System.exit(0);
             }  
           }
@@ -46,9 +46,10 @@ public class myAppointmentsController implements ActionListener {
                     "Are you sure that you want to Cancel?", 
                     "Cancel", 
                     JOptionPane.YES_NO_OPTION);
+               
         
                 if (n == 0){ 
-                    JOptionPane.showMessageDialog(myApp, "Booked Canceled with Success!");
+                    JOptionPane.showMessageDialog(myApp, "Booked Canceled with Success!");  
                     }         
             }
            
@@ -61,6 +62,7 @@ public class myAppointmentsController implements ActionListener {
                         myApp.dispose();
                         new commentsController();
         }
+                
     
     
     }

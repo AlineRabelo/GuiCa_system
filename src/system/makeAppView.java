@@ -26,8 +26,6 @@ public class makeAppView extends JFrame {
     
     private JTextField name;
     private JTextField phone;
-    private JTextField hair;
-    private JTextField location;
     private JButton logoutButton;
     private JButton bookButton;
     
@@ -55,91 +53,75 @@ public class makeAppView extends JFrame {
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         setLocationRelativeTo(null);
+        this.setResizable(false);
         
-        //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
-        JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
-//            painelPrincipal.setBackground(Color.RED);
-            
-        //FLOWLAYOUT CENTRAL
-        FlowLayout centerLayout = new FlowLayout();
-            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
-            
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
 
-        //PANEL DO TOPO PRINCIPAL
-         JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START);    
-//            painelTopo.setBackground(Color.BLUE);
+        FlowLayout centerLayout = new FlowLayout();
+        panelPrincipal.setLayout(centerLayout);
+        centerLayout.setAlignment(FlowLayout.TRAILING);
             
-            
-        //LABEL DO TOPO
-         FlowLayout labelLoginFlow = new FlowLayout();
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START);    
+
+        FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login User: ");
-            painelTopo.add(labelTopo);
-            painelTopo.setLayout(labelLoginFlow);
+        panelTop.add(labelTopo);
+        panelTop.setLayout(labelLoginFlow);
+
+        GridLayout myGrid = new GridLayout(10,5);
+        panelPrincipal.setLayout(myGrid);
+        panelTop.setLayout(myGrid);
             
-         //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(10,5);
-            painelPrincipal.setLayout(minhaGrid);
-            painelTopo.setLayout(minhaGrid);
-            
-            
-        //BOTAO DO LOGOUT
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        painelPrincipal.add(painelTopo);
+        panelPrincipal.add(panelTop);
         logoutButton = new JButton("LogOut");
-        painelTopo.add(logoutButton);
-        painelTopo.setLayout(logOutFlow);
+        panelTop.add(logoutButton);
+        panelTop.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20)); 
         logoutButton.setActionCommand("LogOut");
         logoutButton.addActionListener(userPage);
-        
-        //PANEL DO TOPO COM OS DOIS BOTOES
-          JPanel appointPanel = new JPanel();
-          painelPrincipal.add(appointPanel);
-          FlowLayout appointFlow = new FlowLayout();
-          appointPanel.setLayout(appointFlow);
-          appointFlow.setAlignment(FlowLayout.CENTER);
-          
-          JButton makeAppoint = new JButton("Make an Appointment");
-          JButton myAppoint = new JButton("My Appointments");
-          appointPanel.add(makeAppoint);
-          appointPanel.add(myAppoint);
-          myAppoint.addActionListener(userPage);
-          myAppoint.setActionCommand("appointments");
-//          appointPanel.setBackground(Color.green);
-         
 
+        JPanel appointPanel = new JPanel();
+        panelPrincipal.add(appointPanel);
+        FlowLayout appointFlow = new FlowLayout();
+        appointPanel.setLayout(appointFlow);
+        appointFlow.setAlignment(FlowLayout.CENTER);
           
-         //FLOWLAYOUT DO OR
-         FlowLayout orFlow = new FlowLayout();
-         orFlow.setAlignment(FlowLayout.LEFT);
-        
-        //PANEL CENTRAL
+        JButton makeAppoint = new JButton("Make an Appointment");
+        JButton myAppoint = new JButton("My Appointments");
+        appointPanel.add(makeAppoint);
+        appointPanel.add(myAppoint);
+        myAppoint.addActionListener(userPage);
+        myAppoint.setActionCommand("appointments");
+
+
+        FlowLayout orFlow = new FlowLayout();
+        orFlow.setAlignment(FlowLayout.LEFT);
+
         JPanel namePanel = new JPanel();
-        painelPrincipal.add(namePanel);
+        panelPrincipal.add(namePanel);
         name = new JTextField(20);
         JLabel nameLabel = new JLabel("Name");
-        painelPrincipal.add(name);
+        panelPrincipal.add(name);
         namePanel.add(nameLabel);
         namePanel.add(name);
         
         
         JPanel phonePanel = new JPanel();
-        painelPrincipal.add(phonePanel);
+        panelPrincipal.add(phonePanel);
         phone = new JTextField(20);
         JLabel phoneLabel = new JLabel("Phone");
-        painelPrincipal.add(phone);
+        panelPrincipal.add(phone);
         phonePanel.add(phoneLabel);
         phonePanel.add(phone);       
         
-        //MUDAR PARA OPCAO SELECT E NAO JTEXTFIELD
-        String[] hairStrings = { "Hair Show", "HairStyle 00", "Bald Barber", "HeadOff Barber", "Cabeleileira Leila" }; 
+        String[] hairStrings = { "Hair Show - 10, Grafton Street", "HairStyle 00 - 06, George Street", "Bald Barber - 10, Henry Street", "HeadOff Barber - 8, Grafton Street", "Cabeleileira Leila - 101, Stephens Green" }; 
         JPanel hairPanel = new JPanel();
-        painelPrincipal.add(hairPanel);
+        panelPrincipal.add(hairPanel);
         JLabel hairLabel = new JLabel("Hairdresser");
         hairPanel.add(hairLabel);
 
@@ -147,35 +129,12 @@ public class makeAppView extends JFrame {
         hairList.setSelectedIndex(4); 
         hairPanel.add(hairList);
         System.out.println(hairList.getSelectedItem());
-        hairList.setPreferredSize(new Dimension(200,20));
+        hairList.setPreferredSize(new Dimension(250,20));
         hairList.addActionListener(userPage);
         hairList.setActionCommand("Hairdresser");
-        
-        //ESSA PARTE EU AINDA NAO SEI COMO SERA ENCAIXADO, PQ QUERO QUE QUANDO A 
-        //PESSOA SELECIONAR O HAIRDRESSER O LOCATION APARECA CONFORME O ENDERECO DA PESSOA
-//        JPanel orPanel = new JPanel();
-//        painelPrincipal.add(orPanel);
-//        JLabel orLabel = new JLabel("Or");
-//        orPanel.add(orLabel);
-//        orPanel.setLayout(orFlow);
-//        
-//        String[] locationStrings = { "D01", "D02", "D03", "D04", "D06" }; 
-//        JPanel locationPanel = new JPanel();
-//        painelPrincipal.add(locationPanel);
-//        JLabel locationLabel = new JLabel("Location");
-//        locationPanel.add(locationLabel);
-//        
-//        locationList = new JComboBox(locationStrings); 
-//        locationList.setSelectedIndex(4); 
-//        locationPanel.add(locationList);
-//        System.out.println(locationList.getSelectedItem());
-//        locationList.setPreferredSize(new Dimension(200,20));
-//        locationList.addActionListener(userPage);
-//        locationList.setActionCommand("Location");
-        
    
         JPanel datePanel = new JPanel();
-        painelPrincipal.add(datePanel);
+        panelPrincipal.add(datePanel);
         JLabel dateLabel = new JLabel("Date");
         datePanel.add(dateLabel);
         
@@ -190,7 +149,7 @@ public class makeAppView extends JFrame {
         dateList.setActionCommand("Date");
         
         JPanel hourPanel = new JPanel();
-        painelPrincipal.add(hourPanel);
+        panelPrincipal.add(hourPanel);
         JLabel hourLabel = new JLabel("Hour");
         hourPanel.add(hourLabel);
         
@@ -204,18 +163,14 @@ public class makeAppView extends JFrame {
         hourList.addActionListener(userPage);
         hourList.setActionCommand("Hour");
 
-        
-        //BOTAO DE BOOK
-         JPanel bookPanel = new JPanel();
-        painelPrincipal.add(bookPanel);
+        JPanel bookPanel = new JPanel();
+        panelPrincipal.add(bookPanel);
         bookButton = new JButton("BOOK");
         bookPanel.add(bookButton);
         bookButton.addActionListener(userPage);
         bookButton.setActionCommand("BOOK");
-        
-         painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
-   
-        
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.gray));
+  
     }
     
     public void validation3(){

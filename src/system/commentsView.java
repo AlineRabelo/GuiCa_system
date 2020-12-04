@@ -52,53 +52,40 @@ public class commentsView extends JFrame{
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         setLocationRelativeTo(null);
-        
-        //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
-        JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
-//            painelPrincipal.setBackground(Color.red);
+        this.setResizable(false);
 
-            
-        //FLOWLAYOUT CENTRAL
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
+
         FlowLayout centerLayout = new FlowLayout();
-            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
-            
-            
+        panelPrincipal.setLayout(centerLayout);
+        centerLayout.setAlignment(FlowLayout.TRAILING);
+  
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START); 
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-        //PANEL DO TOPO PRINCIPAL
-         JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START); 
-//            painelTopo.setBackground(Color.blue);
-            painelTopo.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-            
-            
-        //LABEL DO TOPO
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login User: ");
-            painelTopo.add(labelTopo);
-//            painelTopo.setLayout(labelLoginFlow);
+        panelTop.add(labelTopo);
+
+        GridLayout myGrid = new GridLayout(5,1);
+        panelPrincipal.setLayout(myGrid);
+        panelTop.setLayout(myGrid);
             
-         //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(5,1);
-            painelPrincipal.setLayout(minhaGrid);
-            painelTopo.setLayout(minhaGrid);
-            
-            
-        //BOTAO DO LOGOUT
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        painelPrincipal.add(painelTopo);
+        panelPrincipal.add(panelTop);
         logoutButton = new JButton("LogOut");
-        painelTopo.add(logoutButton);
-        painelTopo.setLayout(logOutFlow);
+        panelTop.add(logoutButton);
+        panelTop.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20));
         logoutButton.setActionCommand("LogOut");
         logoutButton.addActionListener(comment);
         
         JPanel appointPanel = new JPanel();
-        painelPrincipal.add(appointPanel);
+        panelPrincipal.add(appointPanel);
         FlowLayout appointFlow = new FlowLayout();
         appointPanel.setLayout(appointFlow);
         appointFlow.setAlignment(FlowLayout.CENTER);
@@ -108,9 +95,9 @@ public class commentsView extends JFrame{
         backAppButton.addActionListener(comment);
         backAppButton.setActionCommand("backApp");
         
-         String[] hairStrings = { "Hair Show", "HairStyle 00", "Bald Barber", "HeadOff Barber", "Cabeleileira Leila" }; 
+        String[] hairStrings = { "Hair Show", "HairStyle 00", "Bald Barber", "HeadOff Barber", "Cabeleileira Leila" }; 
         JPanel hairPanel = new JPanel();
-        painelPrincipal.add(hairPanel);
+        panelPrincipal.add(hairPanel);
         JLabel hairLabel = new JLabel("Hairdresser");
         hairPanel.add(hairLabel);
 
@@ -123,20 +110,19 @@ public class commentsView extends JFrame{
         hairList.setActionCommand("hairdresser");
         
         JPanel boxPanel = new JPanel();
-          painelPrincipal.add(boxPanel);
-//          boxPanel.setBackground(Color.yellow);
-          text = new JTextArea(30,29);
-          boxPanel.add(text);
-          JScrollPane spBox = new JScrollPane(boxPanel);
-          painelPrincipal.add(spBox);
+        panelPrincipal.add(boxPanel);
+        text = new JTextArea(30,29);
+        boxPanel.add(text);
+        JScrollPane spBox = new JScrollPane(boxPanel);
+        panelPrincipal.add(spBox);
 
           
-         JPanel commentPanel = new JPanel();
-         painelPrincipal.add(commentPanel);
-         JButton commentButton = new JButton("Comment");
-         commentPanel.add(commentButton);
-         commentButton.addActionListener(comment);
-         commentButton.setActionCommand("comment");
+        JPanel commentPanel = new JPanel();
+        panelPrincipal.add(commentPanel);
+        JButton commentButton = new JButton("Comment");
+        commentPanel.add(commentButton);
+        commentButton.addActionListener(comment);
+        commentButton.setActionCommand("comment");
         
         
     }

@@ -37,12 +37,14 @@ public class createAccountView extends JFrame {
     private JTextField email;
     private JTextField address;
     private JTextField phone;
-    private JTextField password;
+    private JPasswordField password;
+    private JPasswordField confPass;
     
     JRadioButton client;
     JRadioButton hairdresser;
  
     createAccountController contAccount;
+    
 
     
     public createAccountView (createAccountController contAccount){
@@ -62,96 +64,90 @@ public class createAccountView extends JFrame {
         BorderLayout fLay = new BorderLayout();
         this.setLayout(fLay);
         setLocationRelativeTo(null);
-        
-        
-        
-         //PAINEL PRINCIPAL ONDE VAI TODO O FRAME
-         JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
+        this.setResizable(false);
+
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
+     
+        FlowLayout centerLayout = new FlowLayout();
+        panelPrincipal.setLayout(centerLayout);
+        centerLayout.setAlignment(FlowLayout.CENTER);
             
-            
-         //FLOWLAYOUT DO CENTRO   
-         FlowLayout centerLayout = new FlowLayout();
-            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.CENTER);
-            
-            
-            
-         //GRID LAYOUT
-         GridLayout minhaGrid = new GridLayout(7,2);
-            painelPrincipal.setLayout(minhaGrid);
-         
-        
-        
-        //PAINEL DO TOPO ONDE VOU INSERIR DENTRO DO PANEL PRINCIPAL  
-        JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START);
-            painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
+        GridLayout myGrid = new GridLayout(7,2);
+        panelPrincipal.setLayout(myGrid);
+ 
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START);
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.gray));
                      
-        //LABEL DO TOPO
-        JLabel labelTopo = new JLabel("Create an Account");
-            painelTopo.add(labelTopo);
+
+        JLabel labelTop = new JLabel("Create an Account");
+        panelTop.add(labelTop);
        
-          
-        //PAINEL ONDE O USUARIO VAI INSERIR SUAS CREDENCIAIS
+
         JPanel namePanel = new JPanel();
-        painelPrincipal.add(namePanel);
+        panelPrincipal.add(namePanel);
         name = new JTextField(20);
         JLabel nameLabel = new JLabel("Name");
-        painelPrincipal.add(name);
+        panelPrincipal.add(name);
         namePanel.add(nameLabel);
         namePanel.add(name);
-        painelPrincipal.setLayout(centerLayout);
+        panelPrincipal.setLayout(centerLayout);
         
         JPanel emailPanel = new JPanel();
-        painelPrincipal.add(emailPanel);
+        panelPrincipal.add(emailPanel);
         email = new JTextField(20);
         JLabel emailLabel = new JLabel("Email");
-        painelPrincipal.add(email);
+        panelPrincipal.add(email);
         emailPanel.add(emailLabel);
         emailPanel.add(email);
-        painelPrincipal.setLayout(centerLayout);
+        panelPrincipal.setLayout(centerLayout);
         
         JPanel addressPanel = new JPanel();
-        painelPrincipal.add(addressPanel);
-        address = new JTextField(20);
+        panelPrincipal.add(addressPanel);
+        address = new JTextField(19);
         JLabel addressLabel = new JLabel("Address");
-        painelPrincipal.add(address);
+        panelPrincipal.add(address);
         addressPanel.add(addressLabel);
         addressPanel.add(address);
-        painelPrincipal.setLayout(centerLayout);
+        panelPrincipal.setLayout(centerLayout);
         
         JPanel phonePanel = new JPanel();
-        painelPrincipal.add(phonePanel);
+        panelPrincipal.add(phonePanel);
         phone = new JTextField(20);
         JLabel phoneLabel = new JLabel("Phone");
-        painelPrincipal.add(phone);
+        panelPrincipal.add(phone);
         phonePanel.add(phoneLabel);
         phonePanel.add(phone);
-        painelPrincipal.setLayout(centerLayout);
+        panelPrincipal.setLayout(centerLayout);
         
         JPanel passwordPanel = new JPanel();
-        painelPrincipal.add(passwordPanel);
-        password = new JTextField(20);
+        panelPrincipal.add(passwordPanel);
+        password = new JPasswordField(18);
         JLabel passwordLabel = new JLabel("Password");
-        painelPrincipal.add(password);
+        panelPrincipal.add(password);
         passwordPanel.add(passwordLabel);
         passwordPanel.add(password);
-        painelPrincipal.setLayout(centerLayout);
-
+        panelPrincipal.setLayout(centerLayout);
         
-        //PAINEL ONDE O USUARIO VAI SELECIONAR AS OPCOES DE HAIRDRESSER OU USUARIO
+        JPanel confPassPanel = new JPanel();
+        panelPrincipal.add(confPassPanel);
+        password = new JPasswordField(17);
+        JLabel confPassLabel = new JLabel("Conf. Password");
+        panelPrincipal.add(password);
+        confPassPanel.add(confPassLabel);
+        confPassPanel.add(password);
+        panelPrincipal.setLayout(centerLayout);
         
         JPanel selectPanel = new JPanel();
-        painelPrincipal.add(selectPanel);
+        panelPrincipal.add(selectPanel);
 
-        String[] optionString = { "Client", "Hairdresser" }; 
         
+        String[] optionString = { "Client", "Hairdresser" }; 
          client = new JRadioButton(optionString[0]);
          client.setSelected(true);
          hairdresser = new JRadioButton(optionString[1]);
 
-         //Group the radio buttons. 
          ButtonGroup group = new ButtonGroup(); 
          group.add(client); 
          group.add(hairdresser);
@@ -160,21 +156,19 @@ public class createAccountView extends JFrame {
          hairdresser.addActionListener(contAccount);
          hairdresser.setActionCommand("hairdresser");
  
-         painelPrincipal.add(client);
-         painelPrincipal.add(hairdresser);
+         panelPrincipal.add(client);
+         panelPrincipal.add(hairdresser);
 
          
-        //BOTAO DE "DONE"
         JPanel donePanel = new JPanel();
-        painelPrincipal.add(donePanel);
+        panelPrincipal.add(donePanel);
         JButton doneButton = new JButton("Done");
         donePanel.add(doneButton);
         doneButton.addActionListener(contAccount);
         doneButton.setActionCommand("done");
         
-
         JPanel backPanel = new JPanel();
-        painelPrincipal.add(backPanel);
+        panelPrincipal.add(backPanel);
         JButton backButton = new JButton("Back to Login");
         backPanel.add(backButton);
         backButton.addActionListener(contAccount);
@@ -204,10 +198,11 @@ public class createAccountView extends JFrame {
         return phone.getText();
     }
      
-     public String getValuePassword(){
-        return password.getText();
+    public String getValuePassword(){
+        String passwordString = String.valueOf(password.getPassword());
+        return passwordString;
     }
-     
+
    
      public boolean clientSelect(){
         if (client.isSelected()){

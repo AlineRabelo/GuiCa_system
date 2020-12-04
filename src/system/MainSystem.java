@@ -16,17 +16,18 @@ public class MainSystem {
      */
     public static void main(String[] args) {
         
-       
-        //ESSE
+       //----FEITO-------
+        //LOGIN AND CREATE ACCOUNT
 //        new loginController();  
 //        new createAccountController();
 
-        //ESSE
-        new makeAppController();
+        //USER
+//        new makeAppController();
 //        new myAppointmentsController();
 //        new commentsController();
 
-        //ESSE
+        //---FEITO-------
+        //HAIRDRESSER
 //        new hairBookController();
 //        new hairSlotsController();
 //        new hairCommentsController();

@@ -36,7 +36,7 @@ public class createAccountController implements ActionListener {
                  new loginController();
         
     }
-        
+    
     //---------------NEW USER BUTTON-------------------------
         
         String userName = cAccount.getValueName();
@@ -67,14 +67,9 @@ public class createAccountController implements ActionListener {
                 JOptionPane.showMessageDialog(cAccount, "Account Created with Success!");
                 cAccount.dispose();
                 new loginController(); 
-            }
-            
-              
-            
+            }            
         }
- 
-        
- 
+
     }
     
 }

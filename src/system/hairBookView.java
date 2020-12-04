@@ -47,92 +47,72 @@ public hairBookView (hairBookController hairBook){
 
 public void hairBookSetter(){
 
-    this.setVisible(true);
-    this.setSize(370,360);
-    this.setTitle("Hairdresser Books");
-    BorderLayout fLay = new BorderLayout();
-    this.setLayout(fLay);
-    setLocationRelativeTo(null);
-    
-    
-    
-    //PANEL PRINCIPAL ONDE VAI TODOS OS PANELS
-        JPanel painelPrincipal = new JPanel();
-            this.add(painelPrincipal, BorderLayout.CENTER);
-//            painelPrincipal.setBackground(Color.RED);
-            
-            
-        //FLOWLAYOUT CENTRAL
+        this.setVisible(true);
+        this.setSize(370,360);
+        this.setTitle("Hairdresser Books");
+        BorderLayout fLay = new BorderLayout();
+        this.setLayout(fLay);
+        setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        JPanel panelPrincipal = new JPanel();
+        this.add(panelPrincipal, BorderLayout.CENTER);
+
         FlowLayout centerLayout = new FlowLayout();
-//            painelPrincipal.setLayout(centerLayout);
-            centerLayout.setAlignment(FlowLayout.TRAILING);
+        centerLayout.setAlignment(FlowLayout.TRAILING);
             
 
-        //PANEL DO TOPO PRINCIPAL
-         JPanel painelTopo = new JPanel();
-            this.add(painelTopo, BorderLayout.PAGE_START);    
-//            painelTopo.setBackground(Color.BLUE);
-            painelTopo.setPreferredSize(new Dimension(350,40));
+        JPanel panelTop = new JPanel();
+        this.add(panelTop, BorderLayout.PAGE_START);    
+        panelTop.setPreferredSize(new Dimension(350,40));
 
-            
-        //LABEL DO TOPO
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
         JLabel labelTopo = new JLabel("Login hairdresser: ");
-            painelTopo.add(labelTopo);
-            painelTopo.setLayout(labelLoginFlow);
-            
-         //GRIDLAYOUT
-         GridLayout minhaGrid = new GridLayout(3,1);
-//            painelPrincipal.setLayout(minhaGrid);
-//            painelTopo.setLayout(minhaGrid);  
-            
-        //BOTAO DO LOGOUT
+        panelTop.add(labelTopo);
+        panelTop.setLayout(labelLoginFlow);
+
         FlowLayout logOutFlow = new FlowLayout();
         logOutFlow.setAlignment(FlowLayout.RIGHT);
-        painelPrincipal.add(painelTopo);
+        panelPrincipal.add(panelTop);
         logoutButton = new JButton("LogOut");
-        painelTopo.add(logoutButton);
-        painelTopo.setLayout(logOutFlow);
+        panelTop.add(logoutButton);
+        panelTop.setLayout(logOutFlow);
         logoutButton.setPreferredSize(new Dimension(80,20)); 
         logoutButton.setActionCommand("LogOut");
         logoutButton.addActionListener(hairBook);
         
-        //PANEL DO TOPO COM OS DOIS BOTOES
-          JPanel appointPanel = new JPanel();
-          painelPrincipal.add(appointPanel);
-          FlowLayout appointFlow = new FlowLayout();
-          appointPanel.setLayout(appointFlow);
-          appointFlow.setAlignment(FlowLayout.CENTER);
-          appointPanel.setPreferredSize(new Dimension(370,40));
+        JPanel appointPanel = new JPanel();
+        panelPrincipal.add(appointPanel);
+        FlowLayout appointFlow = new FlowLayout();
+        appointPanel.setLayout(appointFlow);
+        appointFlow.setAlignment(FlowLayout.CENTER);
+        appointPanel.setPreferredSize(new Dimension(370,40));
           
-          JButton makeAppoint = new JButton("Booked");
-          JButton myAppoint = new JButton("Free Slots");
-          JButton myComments = new JButton("Client Comments");
-          appointPanel.add(makeAppoint);
-          appointPanel.add(myAppoint);
-          appointPanel.add(myComments);
-          myAppoint.addActionListener(hairBook);
-          myAppoint.setActionCommand("freeSlots");
-          myComments.addActionListener(hairBook);
-          myComments.setActionCommand("comments");
-//          appointPanel.setBackground(Color.green);
-
-          painelTopo.setBorder(BorderFactory.createLineBorder(Color.gray));
+        JButton makeAppoint = new JButton("Booked");
+        JButton myAppoint = new JButton("Free Slots");
+        JButton myComments = new JButton("Client Comments");
+        appointPanel.add(makeAppoint);
+        appointPanel.add(myAppoint);
+        appointPanel.add(myComments);
+        myAppoint.addActionListener(hairBook);
+        myAppoint.setActionCommand("freeSlots");
+        myComments.addActionListener(hairBook);
+        myComments.setActionCommand("comments");
+        panelTop.setBorder(BorderFactory.createLineBorder(Color.gray));
           
-          JPanel tabelaPanel = new JPanel();
-          painelPrincipal.add(tabelaPanel);
-//          tabelaPanel.setBackground(Color.ORANGE);
-          tabelaPanel.setPreferredSize(new Dimension(370,220));
+        JPanel tabelaPanel = new JPanel();
+        panelPrincipal.add(tabelaPanel);
 
-          String[] coluna = {"Status", "Client", "Date", "Hour"}; 
-          String[][] data = callingDB(); 
+        String[] coluna = {"Status", "Client", "Date", "Hour"}; 
+        String[][] data = callingDB(); 
   
-          JTable tabela = new JTable(data, coluna);
-          JScrollPane sp = new JScrollPane(tabela);
-          tabelaPanel.add(sp);         
-          tabelaPanel.add(tabela);
-          tabela.setBorder(BorderFactory.createLineBorder(Color.gray));
+        JTable table = new JTable(data, coluna);
+        table.setPreferredSize(new Dimension(320,200));
+        JScrollPane sp = new JScrollPane(table);
+        tabelaPanel.add(sp);         
+        tabelaPanel.add(table);
+        table.setBorder(BorderFactory.createLineBorder(Color.gray));
 }
 
          public void validation(){
@@ -145,7 +125,7 @@ public void hairBookSetter(){
          
         public  String [][]  callingDB(){
             
-            String[][] data = new String [10][5];
+            String[][] data = new String [50][5];
             
             
             try {
@@ -153,7 +133,7 @@ public void hairBookSetter(){
                 String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
                 String user = "Aline_2019438";
                 String password = "2019438";
-                String query = "SELECT * FROM Booked ";
+                String query = "SELECT * FROM BookedHairdresser";
 
                 // Get a connection to the database
                 Connection conn = DriverManager.getConnection(dbServer, user, password);
