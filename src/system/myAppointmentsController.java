@@ -46,8 +46,7 @@ public class myAppointmentsController implements ActionListener {
                     "Are you sure that you want to Cancel?", 
                     "Cancel", 
                     JOptionPane.YES_NO_OPTION);
-               
-        
+                      
                 if (n == 0){ 
                     JOptionPane.showMessageDialog(myApp, "Booked Canceled with Success!");  
                     }         
@@ -62,9 +61,7 @@ public class myAppointmentsController implements ActionListener {
                         myApp.dispose();
                         new commentsController();
         }
-                
-    
-    
+
     }
 }
     

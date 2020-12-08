@@ -67,7 +67,7 @@ public void hairSlotsSetter(){
             
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
-        JLabel labelTopo = new JLabel("Login hairdresser: ");
+        JLabel labelTopo = new JLabel("Login hairdresser: Welcome");
         panelTop.add(labelTopo);
         panelTop.setLayout(labelLoginFlow);
 

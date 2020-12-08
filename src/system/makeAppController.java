@@ -46,6 +46,8 @@ public class makeAppController implements ActionListener {
                     JOptionPane.YES_NO_OPTION);
            if (n==0){
                JOptionPane.showMessageDialog(userpg, "Booked Confirmed");
+               userpg.dispose();
+               new makeAppController();
            }
 
        }

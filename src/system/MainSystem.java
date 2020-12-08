@@ -16,17 +16,14 @@ public class MainSystem {
      */
     public static void main(String[] args) {
         
-       //----FEITO-------
         //LOGIN AND CREATE ACCOUNT
 //        new loginController();  
 //        new createAccountController();
 
-        //USER
 //        new makeAppController();
 //        new myAppointmentsController();
-//        new commentsController();
+        new commentsController();
 
-        //---FEITO-------
         //HAIRDRESSER
 //        new hairBookController();
 //        new hairSlotsController();

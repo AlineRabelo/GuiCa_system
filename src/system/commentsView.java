@@ -67,7 +67,7 @@ public class commentsView extends JFrame{
 
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
-        JLabel labelTopo = new JLabel("Login User: ");
+        JLabel labelTopo = new JLabel("Login User: Welcome");
         panelTop.add(labelTopo);
 
         GridLayout myGrid = new GridLayout(5,1);

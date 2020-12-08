@@ -7,13 +7,14 @@ package system;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author aline
  */
-public class commentsController implements ActionListener {
+public class commentsController implements ActionListener{
     
         commentsView comment;
     
@@ -37,6 +38,8 @@ public class commentsController implements ActionListener {
             System.exit(0);
             }  
           }
+        
+        
         if (e.getActionCommand().equals("backApp")){
                comment.dispose();
                new myAppointmentsController();     
@@ -52,24 +55,17 @@ public class commentsController implements ActionListener {
        String Comment = comment.getValueComments();
        
        userUsuario newComment = new userUsuario(hairdresser, Comment);
-       
-       if(e.getActionCommand().equals("comment")){
-           
-           if(comment.getValueHairdresser().isEmpty() || comment.getValueComments().isEmpty()){
-               JOptionPane.showMessageDialog(comment, "Please make a comment");
-           }
-           else if(comment.toString().equals(Comment)){
-                  comment.commentsDB(newComment);
-                 JOptionPane.showMessageDialog(comment, "Comment Created with Success!");
-           }
-       }
-        
-           
-          
-    
-       
-       
-       
-       
+     
+            if(e.getActionCommand().equals("comment")){
+                JOptionPane.showMessageDialog(comment, "Comment Created with Success!");
+                comment.dispose();
+                new commentsController();
+                
+                if(comment.toString().equals(Comment)){
+                comment.commentsDB(newComment);
+             }
+            }
     }
+
 }
+ 

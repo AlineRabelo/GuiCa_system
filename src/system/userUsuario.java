@@ -32,7 +32,6 @@ class userUsuario {
        this.phone = phone;
        this.password = password;
        this.hairdresser = hairdresser; 
-       this.hcomments = hcomments;
     }
 
     userUsuario(String hairdresser, String Comment, String nada) {
@@ -71,6 +70,8 @@ class userUsuario {
     public String getComments(){
         return hcomments;
     }
+    
+
  
 
 }

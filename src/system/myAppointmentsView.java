@@ -69,7 +69,7 @@ public class myAppointmentsView extends JFrame {
 
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
-        JLabel labelTopo = new JLabel("Login User: ");
+        JLabel labelTopo = new JLabel("Login User: Welcome");
         painelTopo.add(labelTopo);
         painelTopo.setLayout(labelLoginFlow);
 

@@ -60,7 +60,6 @@ public void hairBookSetter(){
 
         FlowLayout centerLayout = new FlowLayout();
         centerLayout.setAlignment(FlowLayout.TRAILING);
-            
 
         JPanel panelTop = new JPanel();
         this.add(panelTop, BorderLayout.PAGE_START);    
@@ -68,7 +67,7 @@ public void hairBookSetter(){
 
         FlowLayout labelLoginFlow = new FlowLayout();
         labelLoginFlow.setAlignment(FlowLayout.LEFT);
-        JLabel labelTopo = new JLabel("Login hairdresser: ");
+        JLabel labelTopo = new JLabel("Login hairdresser: Welcome");
         panelTop.add(labelTopo);
         panelTop.setLayout(labelLoginFlow);
 
@@ -119,10 +118,9 @@ public void hairBookSetter(){
     
                 this.validate();
                 this.repaint();
-
             }
          
-         
+   
         public  String [][]  callingDB(){
             
             String[][] data = new String [50][5];
@@ -135,16 +133,11 @@ public void hairBookSetter(){
                 String password = "2019438";
                 String query = "SELECT * FROM BookedHairdresser";
 
-                // Get a connection to the database
                 Connection conn = DriverManager.getConnection(dbServer, user, password);
 
-                // Get a statement from the connection
                 Statement stmt = conn.createStatement();
 
-                // Execute the query
                 ResultSet rs = stmt.executeQuery(query);
-
-                // Loop through the result set
 
                 int row = 0;
                 while (rs.next()) {
@@ -157,7 +150,6 @@ public void hairBookSetter(){
                     row++;       
                 }
 
-                // Close the result set, statement and the connection
                 rs.close();
                 stmt.close();
                 conn.close();
@@ -165,7 +157,6 @@ public void hairBookSetter(){
                 } catch (SQLException se) {
                 System.out.println("SQL Exception:");
 
-                // Loop through the SQL Exceptions
                 while (se != null) {
                     System.out.println("State  : " + se.getSQLState());
                     System.out.println("Message: " + se.getMessage());

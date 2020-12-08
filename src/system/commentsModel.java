@@ -26,7 +26,7 @@ public class commentsModel {
                 String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
                 String user = "Aline_2019438";
                 String password = "2019438";
-                String query = "INSERT INTO Comments(hairdresser, Comment) VALUES ('" + loginUser.getName() + "','" + loginUser.getEmail() + "')" ;
+                String query = "INSERT INTO Comments(hairdresser, Comment) VALUES ('" + loginUser.getHairdresser() + "','" + loginUser.getComments() + "')" ;
 
 
                Connection conn = DriverManager.getConnection(dbServer, user, password);
