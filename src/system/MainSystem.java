@@ -17,12 +17,12 @@ public class MainSystem {
     public static void main(String[] args) {
         
         //LOGIN AND CREATE ACCOUNT
-//        new loginController();  
+        new loginController();  
 //        new createAccountController();
 
 //        new makeAppController();
 //        new myAppointmentsController();
-        new commentsController();
+//        new commentsController();
 
         //HAIRDRESSER
 //        new hairBookController();
